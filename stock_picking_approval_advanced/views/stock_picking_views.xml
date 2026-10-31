@@ -6,31 +6,32 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form"/>
         <field name="arch" type="xml">
-            <!-- 16.0: the Validate buttons hide themselves through show_validate, which is False
-                 for the 'to_approve' state, so no change to them is needed. -->
+            <!-- Validate buttons are replaced by the approval buttons while under review -->
+            <xpath expr="//header/button[@name='button_validate'][1]" position="attributes">
+                <attribute name="invisible" add="state == 'to_approve'" separator=" or "/>
+            </xpath>
+            <xpath expr="//header/button[@name='button_validate'][2]" position="attributes">
+                <attribute name="invisible" add="state == 'to_approve'" separator=" or "/>
+            </xpath>
             <xpath expr="//header/button[@name='button_validate'][1]" position="before">
-                <!-- fields used in attrs must be present in the view -->
-                <field name="approval_state" invisible="1"/>
-                <field name="approval_can_decide" invisible="1"/>
-                <field name="approval_can_recall" invisible="1"/>
                 <button name="action_approval_approve" type="object" string="Approve"
                         class="oe_highlight" icon="fa-check" data-hotkey="a"
-                        attrs="{'invisible': [('approval_can_decide', '=', False)]}" groups="stock.group_stock_user"/>
+                        invisible="not approval_can_decide" groups="stock.group_stock_user"/>
                 <button name="action_approval_reject" type="object" string="Reject"
-                        class="btn-danger text-uppercase" icon="fa-times" data-hotkey="r"
-                        attrs="{'invisible': [('approval_can_decide', '=', False)]}" groups="stock.group_stock_user"/>
+                        class="btn-danger" icon="fa-times" data-hotkey="r"
+                        invisible="not approval_can_decide" groups="stock.group_stock_user"/>
                 <button name="action_approval_recall" type="object" string="Recall Request"
-                        attrs="{'invisible': [('approval_can_recall', '=', False)]}" groups="stock.group_stock_user"
+                        invisible="not approval_can_recall" groups="stock.group_stock_user"
                         confirm="Recall this approval request? The transfer will return to its previous state."/>
             </xpath>
             <xpath expr="//header/button[@name='action_cancel']" position="after">
-                <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': [('state', '!=', 'to_approve')]}"
+                <button name="action_cancel" type="object" string="Cancel" invisible="state != 'to_approve'"
                         groups="stock.group_stock_manager"
                         confirm="Are you sure you want to cancel this transfer?"/>
             </xpath>
 
             <xpath expr="//sheet" position="before">
-                <div class="alert alert-warning mb-0" role="alert" attrs="{'invisible': [('state', '!=', 'to_approve')]}">
+                <div class="alert alert-warning mb-0" role="alert" invisible="state != 'to_approve'">
                     <div>
                         <i class="fa fa-hourglass-half me-1" title="Waiting for approval"/>
                         <strong>Waiting for approval</strong>
@@ -43,7 +44,7 @@
                     </div>
                     <div class="small">Operations and reservations are locked until a decision is made.</div>
                 </div>
-                <div class="alert alert-danger mb-0" role="alert" attrs="{'invisible': [('approval_state', '!=', 'rejected')]}">
+                <div class="alert alert-danger mb-0" role="alert" invisible="approval_state != 'rejected'">
                     <div>
                         <i class="fa fa-ban me-1" title="Rejected"/>
                         <strong>Approval rejected</strong>
@@ -56,17 +57,17 @@
                 </div>
             </xpath>
             <xpath expr="//sheet/div[@name='button_box']" position="after">
-                <widget name="web_ribbon" title="Approved" bg_color="bg-success"
-                        attrs="{'invisible': ['|', ('approval_state', '!=', 'approved'), ('state', '=', 'done')]}"/>
+                <widget name="web_ribbon" title="Approved" bg_color="text-bg-success"
+                        invisible="approval_state != 'approved' or state == 'done'"/>
             </xpath>
 
             <!-- Freeze operations while under review -->
             <xpath expr="//field[@name='move_ids_without_package']" position="attributes">
-                <attribute name="attrs">{'readonly': ['|', '&amp;', ('state', '=', 'done'), ('is_locked', '=', True), ('state', '=', 'to_approve')]}</attribute>
+                <attribute name="readonly" add="state == 'to_approve'" separator=" or "/>
             </xpath>
 
             <xpath expr="//notebook/page[@name='extra']" position="before">
-                <page string="Approval Info" name="approval_info" attrs="{'invisible': [('approval_state', '=', 'none'), ('approval_line_ids', '=', [])]}">
+                <page string="Approval Info" name="approval_info" invisible="approval_state == 'none' and not approval_line_ids">
                     <group>
                         <group>
                             <field name="approval_state" widget="badge"
@@ -75,19 +76,19 @@
                                    decoration-danger="approval_state == 'rejected'"/>
                             <field name="approval_rule_id" options="{'no_create': True}"/>
                             <field name="approval_cycle"/>
-                            <field name="approval_progress" attrs="{'invisible': [('approval_state', '!=', 'pending')]}"/>
+                            <field name="approval_progress" invisible="approval_state != 'pending'"/>
                             <field name="approval_current_approver_ids" widget="many2many_avatar_user"
-                                   attrs="{'invisible': [('approval_state', '!=', 'pending')]}"/>
+                                   invisible="approval_state != 'pending'"/>
                         </group>
                         <group>
                             <field name="approval_requested_by_id" widget="many2one_avatar_user"/>
                             <field name="approval_requested_date"/>
-                            <field name="approval_done_date" attrs="{'invisible': [('approval_state', '!=', 'approved')]}"/>
-                            <field name="approval_rejection_reason" attrs="{'invisible': [('approval_rejection_reason', '=', False)]}"/>
+                            <field name="approval_done_date" invisible="approval_state != 'approved'"/>
+                            <field name="approval_rejection_reason" invisible="not approval_rejection_reason"/>
                         </group>
                     </group>
                     <field name="approval_line_ids" readonly="1">
-                        <tree decoration-success="state == 'approved'"
+                        <list decoration-success="state == 'approved'"
                               decoration-danger="state == 'rejected'"
                               decoration-warning="state == 'pending'"
                               decoration-muted="state in ('cancelled', 'waiting')">
@@ -103,8 +104,8 @@
                             <field name="date"/>
                             <field name="comment" optional="show"/>
                             <field name="rejection_reason" optional="hide"/>
-                            <field name="signature" widget="image" options="{'size': [120, 40]}" optional="show" attrs="{'invisible': [('signature', '=', False)]}"/>
-                        </tree>
+                            <field name="signature" widget="image" options="{'size': [120, 40]}" optional="show" invisible="not signature"/>
+                        </list>
                         <form string="Sign-off">
                             <group>
                                 <group>
@@ -121,8 +122,8 @@
                             </group>
                             <group>
                                 <field name="comment"/>
-                                <field name="rejection_reason" attrs="{'invisible': [('state', '!=', 'rejected')]}"/>
-                                <field name="signature" widget="image" attrs="{'invisible': [('signature', '=', False)]}"/>
+                                <field name="rejection_reason" invisible="state != 'rejected'"/>
+                                <field name="signature" widget="image" invisible="not signature"/>
                             </group>
                         </form>
                     </field>
@@ -139,7 +140,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state']" position="before">
                 <field name="approval_state" optional="hide" widget="badge"
-                       attrs="{'invisible': [('approval_state', '=', 'none')]}"
+                       invisible="approval_state == 'none'"
                        decoration-warning="approval_state == 'pending'"
                        decoration-success="approval_state == 'approved'"
                        decoration-danger="approval_state == 'rejected'"/>
@@ -165,7 +166,7 @@
     <record id="action_picking_to_approve" model="ir.actions.act_window">
         <field name="name">Transfers to Approve</field>
         <field name="res_model">stock.picking</field>
-        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_mode">list,kanban,form</field>
         <field name="domain">[('state', '=', 'to_approve')]</field>
         <field name="context">{'search_default_my_approvals': 1, 'create': False}</field>
         <field name="search_view_id" ref="stock.view_picking_internal_search"/>

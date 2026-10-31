@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Advanced Stock Picking Approval',
-    'version': '16.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Inventory/Inventory',
     'summary': 'Multi-level, rule-based approval workflow for Receipts, '
                'Delivery Orders and Internal Transfers',

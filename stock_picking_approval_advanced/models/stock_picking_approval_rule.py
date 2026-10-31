@@ -77,8 +77,8 @@ class StockPickingApprovalRule(models.Model):
 
     def _compute_picking_count(self):
         data = self.env['stock.picking']._read_group(
-            [('approval_rule_id', 'in', self.ids)], ['approval_rule_id'], ['approval_rule_id'])
-        counts = {d['approval_rule_id'][0]: d['approval_rule_id_count'] for d in data}
+            [('approval_rule_id', 'in', self.ids)], ['approval_rule_id'], ['__count'])
+        counts = {rule.id: count for rule, count in data}
         for rule in self:
             rule.picking_count = counts.get(rule.id, 0)
 

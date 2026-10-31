@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import Command
 from odoo.exceptions import AccessError, UserError, ValidationError
-from odoo.tests import Form, TransactionCase, new_test_user, tagged
+from odoo.tests import TransactionCase, new_test_user, tagged
 
 
 @tagged('post_install', '-at_install', 'stock_picking_approval')
@@ -25,7 +25,7 @@ class TestPickingApproval(TransactionCase):
         cls.type_int.active = True
 
         cls.product = cls.env['product.product'].create({
-            'name': 'Approval Widget', 'type': 'product',
+            'name': 'Approval Widget', 'type': 'consu', 'is_storable': True,
         })
         cls.env['stock.quant']._update_available_quantity(cls.product, cls.stock_location, 100)
 
@@ -87,14 +87,7 @@ class TestPickingApproval(TransactionCase):
         return self._create_picking(self.type_out, self.stock_location, self.customer_location, qty)
 
     def _submit(self, picking, user=None):
-        """Click Validate. Transfers without an approval rule follow the standard 16.0 flow,
-        where an "Immediate Transfer?" dialog may open: confirm it like a user would."""
-        res = picking.with_user(user or self.requester).button_validate()
-        if isinstance(res, dict) and res.get('res_model') == 'stock.immediate.transfer':
-            wizard = Form(self.env[res['res_model']].with_user(user or self.requester).with_context(
-                res['context'])).save()
-            res = wizard.process()
-        return res
+        return picking.with_user(user or self.requester).button_validate()
 
     def _decide(self, picking, user, action='approve', **values):
         wizard = self.env['stock.picking.approval.wizard'].with_user(user).create(
@@ -134,15 +127,14 @@ class TestPickingApproval(TransactionCase):
         # Inventory is untouched and the reservation is kept.
         self.assertEqual(self._on_hand(), 100)
         self.assertEqual(delivery.move_ids.state, 'assigned')
-        self.assertEqual(delivery.move_ids.reserved_availability, 10)
-        self.assertEqual(delivery.move_ids.quantity_done, 10, "Done quantities prepared like the Immediate Transfer step")
+        self.assertEqual(delivery.move_ids.quantity, 10)
 
     def test_03_draft_transfer_is_confirmed_on_submission(self):
         delivery = self._create_picking(self.type_out, self.stock_location, self.customer_location, confirm=False)
         self.assertEqual(delivery.state, 'draft')
         self._submit(delivery)
         self.assertEqual(delivery.state, 'to_approve')
-        self.assertEqual(delivery.move_ids.quantity_done, 10)
+        self.assertEqual(delivery.move_ids.quantity, 10)
 
     def test_04_cannot_validate_while_pending(self):
         delivery = self._delivery()
@@ -156,9 +148,9 @@ class TestPickingApproval(TransactionCase):
         delivery = self._delivery()
         self._submit(delivery)
         with self.assertRaises(UserError):
-            delivery.move_ids.with_user(self.requester).write({'quantity_done': 3})
+            delivery.move_ids.with_user(self.requester).write({'quantity': 3})
         with self.assertRaises(UserError):
-            delivery.move_ids.move_line_ids.with_user(self.requester).write({'qty_done': 1})
+            delivery.move_ids.move_line_ids.with_user(self.requester).write({'quantity': 1})
         with self.assertRaises(UserError):
             delivery.with_user(self.requester).do_unreserve()
         with self.assertRaises(UserError):
@@ -168,20 +160,8 @@ class TestPickingApproval(TransactionCase):
                 'name': self.product.display_name, 'product_id': self.product.id, 'product_uom_qty': 1,
                 'location_id': self.stock_location.id, 'location_dest_id': self.customer_location.id,
             })]})
-        self.assertEqual(delivery.move_ids.quantity_done, 10)
-        self.assertEqual(delivery.move_ids.reserved_availability, 10)
+        self.assertEqual(delivery.move_ids.quantity, 10)
         self.assertEqual(delivery.move_ids.state, 'assigned')
-
-    def test_05b_standard_buttons_hidden_while_pending(self):
-        """16.0: Validate, Set/Clear quantities and Check Availability hide themselves
-        through their own computes for the 'to_approve' state."""
-        delivery = self._delivery()
-        self._submit(delivery)
-        self.assertEqual(delivery.state, 'to_approve')
-        self.assertFalse(delivery.show_validate)
-        self.assertFalse(delivery.show_set_qty_button)
-        self.assertFalse(delivery.show_clear_qty_button)
-        self.assertFalse(delivery.show_check_availability)
 
     def test_06_action_done_guard(self):
         """Even a direct call to the engine cannot execute a pending transfer."""
@@ -278,7 +258,7 @@ class TestPickingApproval(TransactionCase):
         self.assertEqual(delivery.approval_state, 'rejected')
         self.assertEqual(delivery.approval_rejection_reason, 'Wrong customer')
         self.assertEqual(delivery.state, 'assigned', "Back to Ready with reservation kept")
-        self.assertEqual(delivery.move_ids.reserved_availability, 10)
+        self.assertEqual(delivery.move_ids.quantity, 10)
         line_1, line_2 = delivery.approval_line_ids.sorted('sequence')
         self.assertEqual((line_1.state, line_1.rejection_reason, line_1.user_id),
                          ('rejected', 'Wrong customer', self.approver_1))
@@ -289,7 +269,7 @@ class TestPickingApproval(TransactionCase):
             delivery._action_done()
 
         # Operations are editable again, and validating restarts the workflow.
-        delivery.move_ids.with_user(self.requester).write({'quantity_done': 8})
+        delivery.move_ids.with_user(self.requester).write({'quantity': 8})
         self._submit(delivery)
         self.assertEqual(delivery.approval_cycle, 2)
         self.assertEqual(delivery.approval_state, 'pending')
@@ -381,7 +361,7 @@ class TestPickingApproval(TransactionCase):
         self._submit(delivery)
         self._decide(delivery, self.approver_1)
         self._decide(delivery, self.approver_2)
-        delivery.move_ids.with_user(self.requester).write({'quantity_done': 5})
+        delivery.move_ids.with_user(self.requester).write({'quantity': 5})
         self.assertEqual(delivery.approval_state, 'none')
         self._submit(delivery)
         self.assertEqual(delivery.state, 'to_approve')
@@ -410,7 +390,7 @@ class TestPickingApproval(TransactionCase):
     def test_34_backorder_needs_its_own_approval(self):
         self.type_out.create_backorder = 'always'
         delivery = self._delivery()
-        delivery.move_ids.quantity_done = 6
+        delivery.move_ids.quantity = 6
         self._submit(delivery)
         self._decide(delivery, self.approver_1)
         self._decide(delivery, self.approver_2)

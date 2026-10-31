@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 09:50+0000\n"
-"PO-Revision-Date: 2026-10-31 09:50+0000\n"
+"POT-Creation-Date: 2026-10-31 09:03+0000\n"
+"PO-Revision-Date: 2026-10-31 09:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "%s submitted for approval. The approvers have been notified."
 msgstr ""
 
@@ -42,10 +41,10 @@ msgstr ""
 msgid ""
 "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "    <p style=\"margin: 0px; padding: 0px;\">\n"
-"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br><br>\n"
+"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br/><br/>\n"
 "        Your approval request for the transfer\n"
 "        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> has been approved by all tiers.\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
 "            Open the transfer\n"
 "        </a>\n"
@@ -59,14 +58,14 @@ msgstr ""
 msgid ""
 "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "    <p style=\"margin: 0px; padding: 0px;\">\n"
-"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br><br>\n"
+"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br/><br/>\n"
 "        Your approval request for the transfer\n"
 "        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> has been rejected.\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        Reason: <em t-out=\"object.approval_rejection_reason or ''\">Quantities do not match the purchase order.</em>\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        You can correct the transfer and validate it again to start a new approval cycle.\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
 "            Open the transfer\n"
 "        </a>\n"
@@ -80,19 +79,19 @@ msgstr ""
 msgid ""
 "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "    <p style=\"margin: 0px; padding: 0px;\">\n"
-"        Hello,<br><br>\n"
+"        Hello,<br/><br/>\n"
 "        The transfer <strong t-out=\"object.name or ''\">WH/OUT/00042</strong>\n"
 "        (<t t-out=\"object.picking_type_id.display_name or ''\">Delivery Orders</t>)\n"
 "        is waiting for your approval at tier\n"
 "        <strong t-out=\"object.approval_current_line_id.name or ''\">Warehouse Manager</strong>.\n"
-"        <br><br>\n"
-"        Requested by: <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t><br>\n"
-"        Source location: <t t-out=\"object.location_id.display_name or ''\">WH/Stock</t><br>\n"
-"        Destination location: <t t-out=\"object.location_dest_id.display_name or ''\">Customers</t><br>\n"
-"        <t t-if=\"object.partner_id\">Contact: <t t-out=\"object.partner_id.display_name or ''\">Azure Interior</t><br></t>\n"
-"        <t t-if=\"object.origin\">Source document: <t t-out=\"object.origin or ''\">S00012</t><br></t>\n"
+"        <br/><br/>\n"
+"        Requested by: <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t><br/>\n"
+"        Source location: <t t-out=\"object.location_id.display_name or ''\">WH/Stock</t><br/>\n"
+"        Destination location: <t t-out=\"object.location_dest_id.display_name or ''\">Customers</t><br/>\n"
+"        <t t-if=\"object.partner_id\">Contact: <t t-out=\"object.partner_id.display_name or ''\">Azure Interior</t><br/></t>\n"
+"        <t t-if=\"object.origin\">Source document: <t t-out=\"object.origin or ''\">S00012</t><br/></t>\n"
 "        Approval progress: <t t-out=\"object.approval_progress or ''\">0 / 2</t>\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
 "            Review the transfer\n"
 "        </a>\n"
@@ -133,14 +132,12 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "A drawn signature is required to approve this tier."
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "A rejection reason is mandatory."
 msgstr ""
 
@@ -167,7 +164,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "All approval tiers signed: the transfer is approved."
 msgstr ""
 
@@ -259,7 +255,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "Approval information is managed by the approval workflow and cannot be "
 "edited manually."
@@ -268,28 +263,24 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approval request cancelled with the transfer."
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approval request recalled by %s."
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approval requested"
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approval requested under rule <b>%(rule)s</b> (%(count)s tier(s))."
 msgstr ""
 
@@ -315,14 +306,12 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approve %(picking)s (%(tier)s)"
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approve Transfer"
 msgstr ""
 
@@ -601,14 +590,6 @@ msgid "Is Follower"
 msgstr ""
 
 #. module: stock_picking_approval_advanced
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line____last_update
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule____last_update
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier____last_update
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: stock_picking_approval_advanced
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_rejection_reason
 msgid "Last Rejection Reason"
 msgstr ""
@@ -630,11 +611,6 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: stock_picking_approval_advanced
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_main_attachment_id
-msgid "Main Attachment"
-msgstr ""
-
-#. module: stock_picking_approval_advanced
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_has_error
 msgid "Message Delivery error"
 msgstr ""
@@ -652,7 +628,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "No eligible approver was found for tier \"%(tier)s\" of the approval rule "
 "\"%(rule)s\". Please contact your approval administrator."
@@ -696,7 +671,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "Only the requester or an approval administrator can recall the approval "
 "request of %s."
@@ -710,7 +684,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Operation not supported"
 msgstr ""
 
@@ -742,7 +715,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/wizard/stock_picking_approval_wizard.py:0
-#, python-format
 msgid "Please provide the reason of the rejection."
 msgstr ""
 
@@ -778,7 +750,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Reject Transfer"
 msgstr ""
 
@@ -884,7 +855,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "Separation of duties: you cannot approve or reject a request you submitted "
 "yourself."
@@ -931,28 +901,24 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking_approval_rule.py:0
-#, python-format
 msgid "The approval rule \"%s\" must apply to at least one kind of operation."
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking_approval_rule.py:0
-#, python-format
 msgid "The approval rule \"%s\" must define at least one approval tier."
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking_approval_rule.py:0
-#, python-format
 msgid "The approval tier \"%s\" needs at least one approver user or group."
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "The following transfers are already waiting for approval and cannot be validated yet:\n"
 "%s"
@@ -961,7 +927,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "The following transfers are waiting for approval; their operations and reservations are locked until the request is approved, rejected or recalled:\n"
 "%s"
@@ -970,7 +935,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "The following transfers cannot be processed because their approval is pending or was rejected:\n"
 "%s"
@@ -979,7 +943,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "The operations were modified after approval: the approval has been withdrawn"
 " and the transfer must be approved again."
@@ -1002,7 +965,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "The transfer %s is not waiting for approval."
 msgstr ""
 
@@ -1016,21 +978,18 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Tier %s approved."
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Tier <b>%(tier)s</b> rejected. Reason: %(reason)s"
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Tier <b>%s</b> approved."
 msgstr ""
 
@@ -1061,7 +1020,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Transfer %s is waiting for your approval."
 msgstr ""
 
@@ -1168,14 +1126,12 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "You are not an authorized approver for tier \"%(tier)s\" of %(picking)s."
 msgstr ""
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "You cannot request approval for a transfer without any quantity to process."
 msgstr ""
