@@ -1,4 +1,4 @@
-<!-- Odoo Apps description page for stock_picking_approval_advanced (Odoo 16.0). Inline styles only: apps.odoo.com strips <style> and <script> blocks. -->
+<!-- Odoo Apps description page for stock_picking_approval_advanced (Odoo 19.0). Inline styles only: apps.odoo.com strips <style> and <script> blocks. -->
 <section style="max-width:1120px;margin:0 auto;padding:0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#2b2b33;">
 
 <!-- ============================== HERO ============================== -->
@@ -7,9 +7,9 @@
   <h1 style="font-size:40px;line-height:1.15;font-weight:700;margin:0 0 14px;color:#ffffff;">Advanced Stock Picking Approval</h1>
   <p style="font-size:19px;line-height:1.55;max-width:760px;margin:0 0 24px;color:#ffffff;opacity:.95;">Clicking <b>Validate</b> no longer moves stock on its own. Receipts, Delivery Orders and Internal Transfers that match your rules wait in a locked <b>Waiting for Approval</b> state until every approval tier has signed off, with a full audit trail of who approved, when, and why a request was rejected.</p>
   <div>
-    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Odoo 16.0</span>
+    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Odoo 19.0</span>
     <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Community &amp; Enterprise</span>
-    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">29 automated tests</span>
+    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">28 automated tests</span>
     <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">English &amp; Arabic</span>
     <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Technical name: stock_picking_approval_advanced</span>
     <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">LGPL-3</span>
@@ -21,7 +21,7 @@
   <div style="flex:1 1 220px;margin:8px;background:#f6f4f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#714B67;">3 operation kinds</div><div style="font-size:15px;color:#555;">Receipts, Delivery Orders and Internal Transfers, each switchable per rule</div></div>
   <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">N sequential tiers</div><div style="font-size:15px;color:#555;">As many tiers per rule as you need, signed in order by users or groups</div></div>
   <div style="flex:1 1 220px;margin:8px;background:#f6f4f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#714B67;">0 stock moved</div><div style="font-size:15px;color:#555;">until the last tier approves: operations and reservations stay locked</div></div>
-  <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">29 tests</div><div style="font-size:15px;color:#555;">Automated, plus Odoo&rsquo;s stock test suite re-run with the module installed</div></div>
+  <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">28 tests</div><div style="font-size:15px;color:#555;">Automated, plus Odoo&rsquo;s 649 stock tests passing with the module installed</div></div>
 </div>
 
 <!-- ============================== WHY ============================== -->
@@ -29,7 +29,7 @@
 <p style="font-size:16px;color:#555;margin:0 0 18px;">Stock leaves the warehouse the moment someone clicks Validate. For high-value goods, sensitive customers or junior staff, that is one click too few.</p>
 <div style="display:flex;flex-wrap:wrap;margin:0 -10px;">
   <div style="flex:1 1 440px;margin:10px;border:1px solid #f1d6d6;background:#fff8f8;border-radius:14px;padding:24px 26px;">
-    <h3 style="font-size:19px;font-weight:700;color:#b33939;margin:0 0 12px;">In standard Odoo 16</h3>
+    <h3 style="font-size:19px;font-weight:700;color:#b33939;margin:0 0 12px;">In standard Odoo 19</h3>
     <ul style="font-size:15px;line-height:1.65;margin:0;padding-left:20px;color:#3a3a42;">
       <li><b>Validate executes the transfer immediately</b>: there is no review step between preparation and stock movement.</li>
       <li>Any Inventory user who can open the transfer can <b>validate it</b>, whatever the operation or warehouse.</li>
@@ -64,7 +64,7 @@
 
 <!-- ============================== FEATURES ============================== -->
 <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Features</h2>
-<p style="font-size:16px;color:#555;margin:0 0 6px;">Screenshots were taken on Odoo 16.0 with demo data: a two-tier rule for customer deliveries (Team Leader Sara Haddad, then any member of a <i>Warehouse Supervisors</i> group), a single-tier rule for internal transfers, and a receipts rule that only applies when Marc Demo validates.</p>
+<p style="font-size:16px;color:#555;margin:0 0 6px;">Screenshots were taken on Odoo 19.0 with demo data: a two-tier rule for customer deliveries (Team Leader Sara Haddad, then any member of a <i>Warehouse Supervisors</i> group), a single-tier rule for internal transfers, and a receipts rule that only applies when Marc Demo validates.</p>
 
 <div style="margin:44px 0 0;">
   <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Menus</div>
@@ -95,7 +95,7 @@
 <div style="margin:44px 0 0;">
   <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 3</div>
   <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Validate &rarr; Waiting for Approval, with everything locked</h3>
-  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">When a governed transfer is validated, drafts are confirmed and reserved, the reserved quantities are copied into <b>Done</b> (the same step as Odoo&rsquo;s <i>Immediate Transfer</i> dialog, so approvers review exactly what will move) and Odoo&rsquo;s own checks run (lots, serials, empty quantities), but <b>nothing is executed</b>. The status bar shows the new <b>Waiting for Approval</b> step, a banner shows the <b>Current tier</b> and <b>Signed tiers</b>, and <b>Validate</b>, <b>Check Availability</b>, <b>Unreserve</b> and <b>Set/Clear quantities</b> disappear, replaced by <b>Approve</b> and <b>Reject</b> for the current approver. The operations list becomes read-only, and the same lock is enforced on the server: move lines cannot be added, edited or deleted, and the transfer cannot be unreserved, rechecked or processed.</p>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">When a governed transfer is validated, drafts are confirmed, quantities are prepared and Odoo&rsquo;s own checks run (lots, serials, empty quantities), but <b>nothing is executed</b>. The status bar shows the new <b>Waiting for Approval</b> step, a banner shows the <b>Current tier</b> and <b>Signed tiers</b>, and the <b>Validate</b> buttons are replaced by <b>Approve</b> and <b>Reject</b> for the current approver. The operations list becomes read-only, and the same lock is enforced on the server: move lines cannot be added, edited or deleted, and the transfer cannot be unreserved, rechecked or processed.</p>
   <img src="spa_07_waiting_form.png" alt="Delivery waiting for approval, seen by the tier 1 approver" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
   <div style="font-size:13px;color:#777;margin:6px 0 0;">Seen by Sara Haddad (tier 1): her Transfer Approval activity and the request email are in the chatter.</div>
 </div>
@@ -179,7 +179,7 @@
 <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Built for real-world corner cases</h2>
 <p style="font-size:16px;color:#555;margin:0 0 18px;">Handled in the code, and most of them pinned down by the automated tests.</p>
 <div style="display:flex;flex-wrap:wrap;margin:0 -8px;font-size:15px;line-height:1.55;">
-  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Draft transfers</b><br/><span style="color:#555;">Validating a draft confirms and reserves it, then copies the reserved quantities into Done before submission, like the standard Immediate Transfer step. Quantities already entered by hand are kept.</span></div>
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Draft transfers</b><br/><span style="color:#555;">Validating a draft confirms it and fills the demanded quantities before submission, exactly like the standard Validate.</span></div>
   <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Changes after approval</b><br/><span style="color:#555;">If quantities, products, lots or locations change on an approved transfer that is not yet done, the approval is withdrawn and a new cycle is required.</span></div>
   <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Backorders</b><br/><span style="color:#555;">A backorder created from an approved transfer starts with no approval and goes through its own cycle.</span></div>
   <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Inventory adjustments</b><br/><span style="color:#555;">Physical stock corrections can still release a locked reservation: reality wins over a pending approval.</span></div>
@@ -209,14 +209,14 @@
 <h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Technical details</h2>
 <table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:14px;overflow-wrap:anywhere;">
   <tbody>
-    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;width:32%;color:#777;">Odoo version</td><td style="padding:10px 14px;">16.0, Community and Enterprise</td></tr>
+    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;width:32%;color:#777;">Odoo version</td><td style="padding:10px 14px;">19.0, Community and Enterprise</td></tr>
     <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Depends on</td><td style="padding:10px 14px;"><code>stock</code>, <code>mail</code></td></tr>
     <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Python dependency</td><td style="padding:10px 14px;">None</td></tr>
     <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Menus</td><td style="padding:10px 14px;">Inventory &rsaquo; Operations &rsaquo; Transfers to Approve<br/>Inventory &rsaquo; Configuration &rsaquo; Approval Rules</td></tr>
     <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Models</td><td style="padding:10px 14px;"><code>stock.picking.approval.rule</code>, <code>stock.picking.approval.tier</code>, <code>stock.picking.approval.line</code>, wizard <code>stock.picking.approval.wizard</code></td></tr>
     <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Extends</td><td style="padding:10px 14px;"><code>stock.picking</code> (new state <code>to_approve</code>, Approval Info tab, filters), <code>stock.move</code> and <code>stock.move.line</code> (lock while under review)</td></tr>
     <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Data</td><td style="padding:10px 14px;">3 email templates (Request, Approved, Rejected), 1 activity type (Transfer Approval)</td></tr>
-    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Automated tests</td><td style="padding:10px 14px;">29 <code>TransactionCase</code> tests: state interception, locking, hidden standard buttons, sequential and group-based tiers, permission enforcement, self-approval, rejection reasons, recall and cancel, rule scope and priority, signatures, notifications, backorders. Odoo&rsquo;s stock test suite (460 tests) gives the same results with the module installed as without it.</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Automated tests</td><td style="padding:10px 14px;">28 <code>TransactionCase</code> tests: state interception, locking, sequential and group-based tiers, permission enforcement, self-approval, rejection reasons, recall and cancel, rule scope and priority, signatures, notifications, backorders. Odoo&rsquo;s stock test suite (649 tests) passes with the module installed.</td></tr>
     <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Translations</td><td style="padding:10px 14px;">Arabic (<code>ar_001</code>), plus a <code>.pot</code> template</td></tr>
     <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">License</td><td style="padding:10px 14px;">LGPL-3</td></tr>
   </tbody>

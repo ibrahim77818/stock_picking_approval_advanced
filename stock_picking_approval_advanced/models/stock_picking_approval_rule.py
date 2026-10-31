@@ -77,8 +77,8 @@ class StockPickingApprovalRule(models.Model):
 
     def _compute_picking_count(self):
         data = self.env['stock.picking']._read_group(
-            [('approval_rule_id', 'in', self.ids)], ['approval_rule_id'], ['approval_rule_id'])
-        counts = {d['approval_rule_id'][0]: d['approval_rule_id_count'] for d in data}
+            [('approval_rule_id', 'in', self.ids)], ['approval_rule_id'], ['__count'])
+        counts = {rule.id: count for rule, count in data}
         for rule in self:
             rule.picking_count = counts.get(rule.id, 0)
 
@@ -121,7 +121,7 @@ class StockPickingApprovalRule(models.Model):
         if self.warehouse_ids and picking_type.warehouse_id not in self.warehouse_ids:
             return False
         if self.requester_user_ids or self.requester_group_ids:
-            if user not in self.requester_user_ids and not (self.requester_group_ids & user.groups_id):
+            if user not in self.requester_user_ids and not (self.requester_group_ids & user.all_group_ids):
                 return False
         return True
 
@@ -172,8 +172,7 @@ class StockPickingApprovalTier(models.Model):
     def _get_approvers(self, company):
         """Internal, active users allowed to sign this tier in ``company``."""
         self.ensure_one()
-        # Odoo 18 stores implied memberships in res.groups.users, so this covers implied groups.
-        users = (self.approver_user_ids | self.sudo().approver_group_ids.users).sudo()
+        users = (self.approver_user_ids | self.sudo().approver_group_ids.all_user_ids).sudo()
         return users.filtered(
             lambda u: u.active and not u.share and company in u.company_ids
         ).sudo(False)

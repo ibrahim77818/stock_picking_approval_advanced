@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 from odoo import api, models
 
-# 16.0 field names: done quantities live in quantity_done (move) / qty_done (move line),
-# reservations in reserved_uom_qty (move line).
 LOCKED_MOVE_FIELDS = {
-    'product_id', 'product_uom_qty', 'quantity_done', 'product_uom',
+    'product_id', 'product_uom_qty', 'quantity', 'product_uom', 'picked',
     'location_id', 'location_dest_id', 'picking_id',
 }
 LOCKED_MOVE_LINE_FIELDS = {
-    'product_id', 'qty_done', 'reserved_uom_qty', 'product_uom_id', 'lot_id', 'lot_name',
+    'product_id', 'quantity', 'product_uom_id', 'picked', 'lot_id', 'lot_name',
     'location_id', 'location_dest_id', 'package_id', 'result_package_id', 'owner_id',
     'move_id', 'picking_id',
 }

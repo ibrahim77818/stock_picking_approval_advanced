@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-29 06:44+0000\n"
 "PO-Revision-Date: 2026-10-29 06:44+0000\n"
@@ -31,7 +31,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "%s submitted for approval. The approvers have been notified."
 msgstr "تم إرسال %s للاعتماد. تم إشعار المعتمدين."
 
@@ -40,10 +39,10 @@ msgstr "تم إرسال %s للاعتماد. تم إشعار المعتمدين.
 msgid ""
 "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "    <p style=\"margin: 0px; padding: 0px;\">\n"
-"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br><br>\n"
+"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br/><br/>\n"
 "        Your approval request for the transfer\n"
 "        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> has been approved by all tiers.\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
 "            Open the transfer\n"
 "        </a>\n"
@@ -53,10 +52,10 @@ msgid ""
 msgstr ""
 "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\" dir=\"rtl\">\n"
 "    <p style=\"margin: 0px; padding: 0px;\">\n"
-"        مرحبًا <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>،<br><br>\n"
+"        مرحبًا <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>،<br/><br/>\n"
 "        طلب الاعتماد الخاص بك للتحويل\n"
 "        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> تم اعتماده من جميع المستويات.\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
 "            فتح التحويل\n"
 "        </a>\n"
@@ -69,14 +68,14 @@ msgstr ""
 msgid ""
 "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "    <p style=\"margin: 0px; padding: 0px;\">\n"
-"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br><br>\n"
+"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br/><br/>\n"
 "        Your approval request for the transfer\n"
 "        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> has been rejected.\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        Reason: <em t-out=\"object.approval_rejection_reason or ''\">Quantities do not match the purchase order.</em>\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        You can correct the transfer and validate it again to start a new approval cycle.\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
 "            Open the transfer\n"
 "        </a>\n"
@@ -86,14 +85,14 @@ msgid ""
 msgstr ""
 "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\" dir=\"rtl\">\n"
 "    <p style=\"margin: 0px; padding: 0px;\">\n"
-"        مرحبًا <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>،<br><br>\n"
+"        مرحبًا <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>،<br/><br/>\n"
 "        طلب الاعتماد الخاص بك للتحويل\n"
 "        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> تم رفضه.\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        السبب: <em t-out=\"object.approval_rejection_reason or ''\">Quantities do not match the purchase order.</em>\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        يمكنك تصحيح التحويل ثم تأكيده مجددًا لبدء دورة اعتماد جديدة.\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
 "            فتح التحويل\n"
 "        </a>\n"
@@ -106,19 +105,19 @@ msgstr ""
 msgid ""
 "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "    <p style=\"margin: 0px; padding: 0px;\">\n"
-"        Hello,<br><br>\n"
+"        Hello,<br/><br/>\n"
 "        The transfer <strong t-out=\"object.name or ''\">WH/OUT/00042</strong>\n"
 "        (<t t-out=\"object.picking_type_id.display_name or ''\">Delivery Orders</t>)\n"
 "        is waiting for your approval at tier\n"
 "        <strong t-out=\"object.approval_current_line_id.name or ''\">Warehouse Manager</strong>.\n"
-"        <br><br>\n"
-"        Requested by: <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t><br>\n"
-"        Source location: <t t-out=\"object.location_id.display_name or ''\">WH/Stock</t><br>\n"
-"        Destination location: <t t-out=\"object.location_dest_id.display_name or ''\">Customers</t><br>\n"
-"        <t t-if=\"object.partner_id\">Contact: <t t-out=\"object.partner_id.display_name or ''\">Azure Interior</t><br></t>\n"
-"        <t t-if=\"object.origin\">Source document: <t t-out=\"object.origin or ''\">S00012</t><br></t>\n"
+"        <br/><br/>\n"
+"        Requested by: <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t><br/>\n"
+"        Source location: <t t-out=\"object.location_id.display_name or ''\">WH/Stock</t><br/>\n"
+"        Destination location: <t t-out=\"object.location_dest_id.display_name or ''\">Customers</t><br/>\n"
+"        <t t-if=\"object.partner_id\">Contact: <t t-out=\"object.partner_id.display_name or ''\">Azure Interior</t><br/></t>\n"
+"        <t t-if=\"object.origin\">Source document: <t t-out=\"object.origin or ''\">S00012</t><br/></t>\n"
 "        Approval progress: <t t-out=\"object.approval_progress or ''\">0 / 2</t>\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
 "            Review the transfer\n"
 "        </a>\n"
@@ -128,19 +127,19 @@ msgid ""
 msgstr ""
 "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\" dir=\"rtl\">\n"
 "    <p style=\"margin: 0px; padding: 0px;\">\n"
-"        مرحبًا،<br><br>\n"
+"        مرحبًا،<br/><br/>\n"
 "        التحويل <strong t-out=\"object.name or ''\">WH/OUT/00042</strong>\n"
 "        (<t t-out=\"object.picking_type_id.display_name or ''\">Delivery Orders</t>)\n"
 "        بانتظار اعتمادك في المستوى\n"
 "        <strong t-out=\"object.approval_current_line_id.name or ''\">Warehouse Manager</strong>.\n"
-"        <br><br>\n"
-"        مقدّم الطلب: <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t><br>\n"
-"        الموقع المصدر: <t t-out=\"object.location_id.display_name or ''\">WH/Stock</t><br>\n"
-"        موقع الوجهة: <t t-out=\"object.location_dest_id.display_name or ''\">Customers</t><br>\n"
-"        <t t-if=\"object.partner_id\">جهة الاتصال: <t t-out=\"object.partner_id.display_name or ''\">Azure Interior</t><br></t>\n"
-"        <t t-if=\"object.origin\">المستند المصدر: <t t-out=\"object.origin or ''\">S00012</t><br></t>\n"
+"        <br/><br/>\n"
+"        مقدّم الطلب: <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t><br/>\n"
+"        الموقع المصدر: <t t-out=\"object.location_id.display_name or ''\">WH/Stock</t><br/>\n"
+"        موقع الوجهة: <t t-out=\"object.location_dest_id.display_name or ''\">Customers</t><br/>\n"
+"        <t t-if=\"object.partner_id\">جهة الاتصال: <t t-out=\"object.partner_id.display_name or ''\">Azure Interior</t><br/></t>\n"
+"        <t t-if=\"object.origin\">المستند المصدر: <t t-out=\"object.origin or ''\">S00012</t><br/></t>\n"
 "        تقدم الاعتماد: <t t-out=\"object.approval_progress or ''\">0 / 2</t>\n"
-"        <br><br>\n"
+"        <br/><br/>\n"
 "        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
 "            مراجعة التحويل\n"
 "        </a>\n"
@@ -184,14 +183,12 @@ msgstr "<span class=\"ms-4 me-1\">المستويات الموقّعة:</span>"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "A drawn signature is required to approve this tier."
 msgstr "يلزم توقيع مرسوم لاعتماد هذا المستوى."
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "A rejection reason is mandatory."
 msgstr "سبب الرفض إلزامي."
 
@@ -218,7 +215,6 @@ msgstr "المسؤول"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "All approval tiers signed: the transfer is approved."
 msgstr "تم توقيع جميع مستويات الاعتماد: تم اعتماد التحويل."
 
@@ -310,7 +306,6 @@ msgstr "مستويات الاعتماد"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "Approval information is managed by the approval workflow and cannot be "
 "edited manually."
@@ -320,28 +315,24 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approval request cancelled with the transfer."
 msgstr "تم إلغاء طلب الاعتماد مع إلغاء التحويل."
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approval request recalled by %s."
 msgstr "تم سحب طلب الاعتماد بواسطة %s."
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approval requested"
 msgstr "تم طلب الاعتماد"
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approval requested under rule <b>%(rule)s</b> (%(count)s tier(s))."
 msgstr ""
 "تم طلب الاعتماد وفق القاعدة <b>%(rule)s</b> (%(count)s مستوى/مستويات)."
@@ -370,14 +361,12 @@ msgstr "اعتماد"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approve %(picking)s (%(tier)s)"
 msgstr "اعتماد %(picking)s (%(tier)s)"
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Approve Transfer"
 msgstr "اعتماد التحويل"
 
@@ -570,6 +559,9 @@ msgid "Discard"
 msgstr "تجاهل"
 
 #. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_move__display_name
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_move_line__display_name
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__display_name
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__display_name
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__display_name
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__display_name
@@ -612,6 +604,9 @@ msgid "Has Message"
 msgstr "يحتوي على رسالة"
 
 #. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_move__id
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_move_line__id
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__id
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__id
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__id
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__id
@@ -664,14 +659,6 @@ msgid "Is Follower"
 msgstr "متابع"
 
 #. module: stock_picking_approval_advanced
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line____last_update
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule____last_update
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier____last_update
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard____last_update
-msgid "Last Modified on"
-msgstr "آخر تعديل في"
-
-#. module: stock_picking_approval_advanced
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_rejection_reason
 msgid "Last Rejection Reason"
 msgstr "آخر سبب رفض"
@@ -693,11 +680,6 @@ msgid "Last Updated on"
 msgstr "آخر تحديث في"
 
 #. module: stock_picking_approval_advanced
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_main_attachment_id
-msgid "Main Attachment"
-msgstr "المرفق الرئيسي"
-
-#. module: stock_picking_approval_advanced
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_has_error
 msgid "Message Delivery error"
 msgstr "خطأ في تسليم الرسالة"
@@ -715,7 +697,6 @@ msgstr "الاسم"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "No eligible approver was found for tier \"%(tier)s\" of the approval rule "
 "\"%(rule)s\". Please contact your approval administrator."
@@ -761,7 +742,6 @@ msgstr "عدد الرسائل ذات أخطاء التسليم"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "Only the requester or an approval administrator can recall the approval "
 "request of %s."
@@ -772,13 +752,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__picking_type_ids
 msgid "Operation Types"
 msgstr "أنواع العمليات"
-
-#. module: stock_picking_approval_advanced
-#. odoo-python
-#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
-msgid "Operation not supported"
-msgstr "العملية غير مدعومة"
 
 #. module: stock_picking_approval_advanced
 #: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
@@ -808,7 +781,6 @@ msgstr "بانتظار الاعتماد"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/wizard/stock_picking_approval_wizard.py:0
-#, python-format
 msgid "Please provide the reason of the rejection."
 msgstr "يرجى إدخال سبب الرفض."
 
@@ -844,7 +816,6 @@ msgstr "رفض"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Reject Transfer"
 msgstr "رفض التحويل"
 
@@ -955,7 +926,6 @@ msgstr "يُرسل إلى مقدّم الطلب عند رفض أحد المعت�
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "Separation of duties: you cannot approve or reject a request you submitted "
 "yourself."
@@ -1002,28 +972,24 @@ msgstr "حركة المخزون"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking_approval_rule.py:0
-#, python-format
 msgid "The approval rule \"%s\" must apply to at least one kind of operation."
 msgstr "يجب أن تنطبق قاعدة الاعتماد \"%s\" على نوع واحد على الأقل من العمليات."
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking_approval_rule.py:0
-#, python-format
 msgid "The approval rule \"%s\" must define at least one approval tier."
 msgstr "يجب أن تحدد قاعدة الاعتماد \"%s\" مستوى اعتماد واحدًا على الأقل."
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking_approval_rule.py:0
-#, python-format
 msgid "The approval tier \"%s\" needs at least one approver user or group."
 msgstr "يحتاج مستوى الاعتماد \"%s\" إلى مستخدم معتمِد أو مجموعة واحدة على الأقل."
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "The following transfers are already waiting for approval and cannot be validated yet:\n"
 "%s"
@@ -1034,7 +1000,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "The following transfers are waiting for approval; their operations and reservations are locked until the request is approved, rejected or recalled:\n"
 "%s"
@@ -1045,7 +1010,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "The following transfers cannot be processed because their approval is pending or was rejected:\n"
 "%s"
@@ -1056,7 +1020,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "The operations were modified after approval: the approval has been withdrawn"
 " and the transfer must be approved again."
@@ -1083,7 +1046,6 @@ msgstr ""
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "The transfer %s is not waiting for approval."
 msgstr "التحويل %s ليس بانتظار الاعتماد."
 
@@ -1097,21 +1059,18 @@ msgstr "المستوى"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Tier %s approved."
 msgstr "تم اعتماد المستوى %s."
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Tier <b>%(tier)s</b> rejected. Reason: %(reason)s"
 msgstr "تم رفض المستوى <b>%(tier)s</b>. السبب: %(reason)s"
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Tier <b>%s</b> approved."
 msgstr "تم اعتماد المستوى <b>%s</b>."
 
@@ -1144,7 +1103,6 @@ msgstr "التحويل"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "Transfer %s is waiting for your approval."
 msgstr "التحويل %s بانتظار اعتمادك."
 
@@ -1189,7 +1147,7 @@ msgid "Transfer Approval: Request"
 msgstr "اعتماد التحويل: طلب"
 
 #. module: stock_picking_approval_advanced
-#: model:ir.module.category,name:stock_picking_approval_advanced.module_category_picking_approval
+#: model:res.groups.privilege,name:stock_picking_approval_advanced.res_groups_privilege_picking_approval
 msgid "Transfer Approvals"
 msgstr "اعتمادات التحويلات"
 
@@ -1252,14 +1210,12 @@ msgstr "سير العمل"
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid "You are not an authorized approver for tier \"%(tier)s\" of %(picking)s."
 msgstr "لست معتمِدًا مخوّلًا للمستوى \"%(tier)s\" في %(picking)s."
 
 #. module: stock_picking_approval_advanced
 #. odoo-python
 #: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
-#, python-format
 msgid ""
 "You cannot request approval for a transfer without any quantity to process."
 msgstr "لا يمكنك طلب اعتماد لتحويل لا يحتوي على أي كمية للمعالجة."

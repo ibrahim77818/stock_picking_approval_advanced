@@ -3,7 +3,6 @@ from markupsafe import Markup
 
 from odoo import api, fields, models, _, Command
 from odoo.exceptions import AccessError, UserError
-from odoo.tools import float_is_zero
 
 APPROVAL_STATES = [
     ('none', 'Not Requested'),
@@ -94,8 +93,7 @@ class StockPicking(models.Model):
         for picking in self:
             partners = picking.approval_current_approver_ids.partner_id
             picking.approval_mail_partner_to = ','.join(str(pid) for pid in partners.ids)
-            picking.approval_record_url = '%s/web#id=%s&model=stock.picking&view_type=form' % (
-                picking.get_base_url(), picking.id)
+            picking.approval_record_url = '%s/odoo/stock.picking/%s' % (picking.get_base_url(), picking.id)
 
     @api.depends_context('uid')
     @api.depends('state', 'approval_state', 'approval_requested_by_id',
@@ -114,16 +112,17 @@ class StockPicking(models.Model):
                 is_manager or user == picking.approval_requested_by_id)
 
     def _search_approval_is_mine(self, operator, value):
-        if operator not in ('=', '!=') or not isinstance(value, bool):
-            raise NotImplementedError(_("Operation not supported"))
-        # 16.0 has no 'any' domain operator: resolve the pending lines first.
-        lines = self.env['stock.picking.approval.line'].sudo().search([
-            ('state', '=', 'pending'),
-            ('approver_user_ids', 'in', [self.env.uid]),
-            ('picking_id.state', '=', 'to_approve'),
-        ])
-        positive = (operator == '=') == value
-        return [('id', 'in' if positive else 'not in', lines.picking_id.ids)]
+        if operator not in ('in', 'not in'):
+            return NotImplemented
+        domain = [
+            ('state', '=', 'to_approve'),
+            ('approval_line_ids', 'any', [
+                ('state', '=', 'pending'),
+                ('approver_user_ids', 'in', [self.env.uid]),
+            ]),
+        ]
+        positive = (operator == 'in') == (True in value)
+        return domain if positive else ['!', '&', *domain]
 
     # ------------------------------------------------------------------
     # ORM guards
@@ -241,25 +240,15 @@ class StockPicking(models.Model):
             lambda l: l.cycle == self.approval_cycle).sorted(lambda l: (l.sequence, l.id))
 
     def _approval_prepare_submission(self):
-        """Same preparation as the standard 16.0 validation, without executing it.
-
-        In 16.0, validating a transfer with no done quantity opens the "Immediate Transfer"
-        wizard, which confirms/reserves drafts and copies the reserved quantities into the
-        done quantities. Submitting for approval applies the same step, so approvers review
-        the quantities that will actually be processed.
-        """
+        """Same preparation as the standard validation, without executing it."""
         draft = self.filtered(lambda p: p.state == 'draft')
         draft.action_confirm()
-        to_reserve = draft.filtered(lambda p: p.state != 'assigned')
-        if to_reserve:
-            to_reserve.action_assign()
-        immediate = self._check_immediate()
-        immediate.move_ids._set_quantities_to_reservation()
+        for move in draft.move_ids:
+            if move.product_uom.is_zero(move.quantity) and not move.product_uom.is_zero(move.product_uom_qty):
+                move.quantity = move.product_uom_qty
         if not self.env.context.get('skip_sanity_check'):
             self._sanity_check()
-        self.message_subscribe([self.env.user.partner_id.id])
-        if any(all(float_is_zero(m.quantity_done, precision_rounding=m.product_uom.rounding) for m in p.move_ids)
-               for p in self):
+        if any(all(m.product_uom.is_zero(m.quantity) for m in p.move_ids) for p in self):
             raise UserError(_("You cannot request approval for a transfer without any quantity to process."))
 
     def _approval_submit(self, rule):
