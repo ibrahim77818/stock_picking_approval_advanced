@@ -1,6 +1,6 @@
 # Advanced Stock Picking Approval (`stock_picking_approval_advanced`)
 
-Odoo 16.0 · Community & Enterprise · depends on `stock`, `mail` · LGPL-3 · Author: Ibrahim Yahia
+Odoo 17.0 · Community & Enterprise · depends on `stock`, `mail` · LGPL-3 · Author: Ibrahim Yahia
 
 Routes the validation of Receipts, Delivery Orders and Internal Transfers through a
 rule-based, sequential multi-tier approval workflow.
@@ -60,6 +60,6 @@ Rules are evaluated by sequence; the first match wins.
 odoo-bin -d <db> -i stock_picking_approval_advanced --test-tags /stock_picking_approval_advanced --stop-after-init
 ```
 
-29 `TransactionCase` tests cover state interception, locking, sequential tiers,
+28 `TransactionCase` tests cover state interception, locking, sequential tiers,
 group-based approvers, permission enforcement, self-approval, rejection reasons,
 recall/cancel, rule scoping and priority, signatures, notifications and backorders.

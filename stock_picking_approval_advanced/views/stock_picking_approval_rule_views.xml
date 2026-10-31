@@ -14,7 +14,7 @@
                 <field name="warehouse_ids" widget="many2many_tags" optional="show"/>
                 <field name="tier_count"/>
                 <field name="company_id" groups="base.group_multi_company" optional="show"/>
-                <field name="active" invisible="1"/>
+                <field name="active" column_invisible="True"/>
             </tree>
         </field>
     </record>
@@ -30,7 +30,7 @@
                             <field name="picking_count" widget="statinfo" string="Transfers"/>
                         </button>
                     </div>
-                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
                     <div class="oe_title">
                         <label for="name"/>
                         <h1><field name="name" placeholder="e.g. High-value deliveries"/></h1>
@@ -49,7 +49,7 @@
                             <field name="requester_group_ids" widget="many2many_tags" options="{'no_create': True}"/>
                             <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
                             <field name="active" invisible="1"/>
-                            <!-- needed by the check_company domains for users without multi-company -->
+                            <!-- 17.0: needed by the check_company domains for users without multi-company -->
                             <field name="company_id" invisible="1"/>
                         </group>
                     </group>

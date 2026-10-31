@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-29 06:44+0000\n"
 "PO-Revision-Date: 2026-10-29 06:44+0000\n"
@@ -664,14 +664,6 @@ msgid "Is Follower"
 msgstr "متابع"
 
 #. module: stock_picking_approval_advanced
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line____last_update
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule____last_update
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier____last_update
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard____last_update
-msgid "Last Modified on"
-msgstr "آخر تعديل في"
-
-#. module: stock_picking_approval_advanced
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_rejection_reason
 msgid "Last Rejection Reason"
 msgstr "آخر سبب رفض"
@@ -691,11 +683,6 @@ msgstr "آخر تحديث بواسطة"
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__write_date
 msgid "Last Updated on"
 msgstr "آخر تحديث في"
-
-#. module: stock_picking_approval_advanced
-#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_main_attachment_id
-msgid "Main Attachment"
-msgstr "المرفق الرئيسي"
 
 #. module: stock_picking_approval_advanced
 #: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_has_error

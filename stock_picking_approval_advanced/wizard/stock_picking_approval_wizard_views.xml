@@ -7,7 +7,7 @@
             <form string="Approval Decision">
                 <field name="action" invisible="1"/>
                 <field name="require_signature" invisible="1"/>
-                <div class="alert alert-danger" role="alert" attrs="{'invisible': [('action', '!=', 'reject')]}">
+                <div class="alert alert-danger" role="alert" invisible="action != 'reject'">
                     Rejecting returns the transfer to its requester. A reason is mandatory and will be
                     recorded in the approval history.
                 </div>
@@ -15,20 +15,20 @@
                     <field name="picking_id"/>
                     <field name="tier_name"/>
                 </group>
-                <group attrs="{'invisible': [('action', '!=', 'approve')]}">
+                <group invisible="action != 'approve'">
                     <field name="comment" placeholder="Optional sign-off comment..."/>
-                    <field name="signature" widget="signature" attrs="{'required': [('action', '=', 'approve'), ('require_signature', '=', True)]}"
+                    <field name="signature" widget="signature" required="action == 'approve' and require_signature"
                            options="{'full_name': 'tier_name'}"/>
                 </group>
-                <group attrs="{'invisible': [('action', '!=', 'reject')]}">
-                    <field name="rejection_reason" attrs="{'required': [('action', '=', 'reject')]}"
+                <group invisible="action != 'reject'">
+                    <field name="rejection_reason" required="action == 'reject'"
                            placeholder="Explain why this transfer is rejected..."/>
                 </group>
                 <footer>
                     <button name="action_confirm" type="object" string="Approve" class="btn-primary"
-                            attrs="{'invisible': [('action', '!=', 'approve')]}" data-hotkey="q"/>
-                    <button name="action_confirm" type="object" string="Reject" class="btn-danger text-uppercase"
-                            attrs="{'invisible': [('action', '!=', 'reject')]}" data-hotkey="q"/>
+                            invisible="action != 'approve'" data-hotkey="q"/>
+                    <button name="action_confirm" type="object" string="Reject" class="btn-danger"
+                            invisible="action != 'reject'" data-hotkey="q"/>
                     <button string="Discard" special="cancel" class="btn-secondary" data-hotkey="x"/>
                 </footer>
             </form>

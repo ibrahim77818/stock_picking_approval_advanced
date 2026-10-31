@@ -116,14 +116,15 @@ class StockPicking(models.Model):
     def _search_approval_is_mine(self, operator, value):
         if operator not in ('=', '!=') or not isinstance(value, bool):
             raise NotImplementedError(_("Operation not supported"))
-        # 16.0 has no 'any' domain operator: resolve the pending lines first.
-        lines = self.env['stock.picking.approval.line'].sudo().search([
-            ('state', '=', 'pending'),
-            ('approver_user_ids', 'in', [self.env.uid]),
-            ('picking_id.state', '=', 'to_approve'),
-        ])
+        domain = [
+            ('state', '=', 'to_approve'),
+            ('approval_line_ids', 'any', [
+                ('state', '=', 'pending'),
+                ('approver_user_ids', 'in', [self.env.uid]),
+            ]),
+        ]
         positive = (operator == '=') == value
-        return [('id', 'in' if positive else 'not in', lines.picking_id.ids)]
+        return domain if positive else ['!', '&', *domain]
 
     # ------------------------------------------------------------------
     # ORM guards
@@ -241,24 +242,19 @@ class StockPicking(models.Model):
             lambda l: l.cycle == self.approval_cycle).sorted(lambda l: (l.sequence, l.id))
 
     def _approval_prepare_submission(self):
-        """Same preparation as the standard 16.0 validation, without executing it.
-
-        In 16.0, validating a transfer with no done quantity opens the "Immediate Transfer"
-        wizard, which confirms/reserves drafts and copies the reserved quantities into the
-        done quantities. Submitting for approval applies the same step, so approvers review
-        the quantities that will actually be processed.
-        """
+        """Same preparation as the standard validation, without executing it."""
         draft = self.filtered(lambda p: p.state == 'draft')
         draft.action_confirm()
-        to_reserve = draft.filtered(lambda p: p.state != 'assigned')
-        if to_reserve:
-            to_reserve.action_assign()
-        immediate = self._check_immediate()
-        immediate.move_ids._set_quantities_to_reservation()
+        for move in draft.move_ids:
+            rounding = move.product_uom.rounding
+            if float_is_zero(move.quantity, precision_rounding=rounding) and \
+                    not float_is_zero(move.product_uom_qty, precision_rounding=rounding):
+                move.quantity = move.product_uom_qty
         if not self.env.context.get('skip_sanity_check'):
             self._sanity_check()
+        # Odoo 18 subscribes the validating user, keep the same behaviour on submission.
         self.message_subscribe([self.env.user.partner_id.id])
-        if any(all(float_is_zero(m.quantity_done, precision_rounding=m.product_uom.rounding) for m in p.move_ids)
+        if any(all(float_is_zero(m.quantity, precision_rounding=m.product_uom.rounding) for m in p.move_ids)
                for p in self):
             raise UserError(_("You cannot request approval for a transfer without any quantity to process."))
 
