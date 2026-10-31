@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="mail_activity_type_picking_approval" model="mail.activity.type">
+            <field name="name">Transfer Approval</field>
+            <field name="summary">Approve transfer</field>
+            <field name="icon">fa-check-square-o</field>
+            <field name="res_model">stock.picking</field>
+            <field name="decoration_type">warning</field>
+            <field name="delay_count">0</field>
+            <field name="sequence">90</field>
+        </record>
+    </data>
+</odoo>

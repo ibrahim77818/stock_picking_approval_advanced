@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_stock_picking_to_approve"
+              name="Transfers to Approve"
+              parent="stock.menu_stock_warehouse_mgmt"
+              action="action_picking_to_approve"
+              groups="stock.group_stock_user"
+              sequence="25"/>
+
+    <menuitem id="menu_stock_picking_approval_rule"
+              name="Approval Rules"
+              parent="stock.menu_stock_config_settings"
+              action="action_stock_picking_approval_rule"
+              groups="group_picking_approval_manager"
+              sequence="12"/>
+</odoo>

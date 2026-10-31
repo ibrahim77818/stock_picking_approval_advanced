@@ -1,0 +1,234 @@
+<!-- Odoo Apps description page for stock_picking_approval_advanced (Odoo 16.0). Inline styles only: apps.odoo.com strips <style> and <script> blocks. -->
+<section style="max-width:1120px;margin:0 auto;padding:0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#2b2b33;">
+
+<!-- ============================== HERO ============================== -->
+<div style="background:linear-gradient(120deg,#017E84 0%,#3d6b78 45%,#714B67 100%);border-radius:18px;padding:48px 40px 40px;color:#ffffff;margin-top:12px;">
+  <div style="font-size:13px;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-bottom:10px;">Inventory &middot; Approvals &middot; Internal Control</div>
+  <h1 style="font-size:40px;line-height:1.15;font-weight:700;margin:0 0 14px;color:#ffffff;">Advanced Stock Picking Approval</h1>
+  <p style="font-size:19px;line-height:1.55;max-width:760px;margin:0 0 24px;color:#ffffff;opacity:.95;">Clicking <b>Validate</b> no longer moves stock on its own. Receipts, Delivery Orders and Internal Transfers that match your rules wait in a locked <b>Waiting for Approval</b> state until every approval tier has signed off, with a full audit trail of who approved, when, and why a request was rejected.</p>
+  <div>
+    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Odoo 16.0</span>
+    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Community &amp; Enterprise</span>
+    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">29 automated tests</span>
+    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">English &amp; Arabic</span>
+    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">Technical name: stock_picking_approval_advanced</span>
+    <span style="display:inline-block;border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:6px 14px;margin:0 8px 8px 0;font-size:14px;">LGPL-3</span>
+  </div>
+</div>
+
+<!-- ============================== KEY NUMBERS ============================== -->
+<div style="display:flex;flex-wrap:wrap;margin:28px -8px 8px;">
+  <div style="flex:1 1 220px;margin:8px;background:#f6f4f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#714B67;">3 operation kinds</div><div style="font-size:15px;color:#555;">Receipts, Delivery Orders and Internal Transfers, each switchable per rule</div></div>
+  <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">N sequential tiers</div><div style="font-size:15px;color:#555;">As many tiers per rule as you need, signed in order by users or groups</div></div>
+  <div style="flex:1 1 220px;margin:8px;background:#f6f4f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#714B67;">0 stock moved</div><div style="font-size:15px;color:#555;">until the last tier approves: operations and reservations stay locked</div></div>
+  <div style="flex:1 1 220px;margin:8px;background:#eef6f6;border-radius:14px;padding:20px 22px;"><div style="font-size:30px;font-weight:700;color:#017E84;">29 tests</div><div style="font-size:15px;color:#555;">Automated, plus Odoo&rsquo;s stock test suite re-run with the module installed</div></div>
+</div>
+
+<!-- ============================== WHY ============================== -->
+<h2 style="font-size:28px;font-weight:700;margin:40px 0 6px;color:#2b2b33;">Why this module</h2>
+<p style="font-size:16px;color:#555;margin:0 0 18px;">Stock leaves the warehouse the moment someone clicks Validate. For high-value goods, sensitive customers or junior staff, that is one click too few.</p>
+<div style="display:flex;flex-wrap:wrap;margin:0 -10px;">
+  <div style="flex:1 1 440px;margin:10px;border:1px solid #f1d6d6;background:#fff8f8;border-radius:14px;padding:24px 26px;">
+    <h3 style="font-size:19px;font-weight:700;color:#b33939;margin:0 0 12px;">In standard Odoo 16</h3>
+    <ul style="font-size:15px;line-height:1.65;margin:0;padding-left:20px;color:#3a3a42;">
+      <li><b>Validate executes the transfer immediately</b>: there is no review step between preparation and stock movement.</li>
+      <li>Any Inventory user who can open the transfer can <b>validate it</b>, whatever the operation or warehouse.</li>
+      <li>No <b>multi-level sign-off</b>: a team leader and a supervisor cannot both be required, in order.</li>
+      <li>Nothing records <b>who authorised</b> a transfer, when, or with which comment or signature.</li>
+      <li>A refused transfer leaves <b>no reason</b> behind for the person who prepared it.</li>
+      <li>Managers are <b>not alerted</b> when something needs their decision.</li>
+    </ul>
+  </div>
+  <div style="flex:1 1 440px;margin:10px;border:1px solid #cfe7e7;background:#f4fbfb;border-radius:14px;padding:24px 26px;">
+    <h3 style="font-size:19px;font-weight:700;color:#017E84;margin:0 0 12px;">With this module</h3>
+    <ul style="font-size:15px;line-height:1.65;margin:0;padding-left:20px;color:#3a3a42;">
+      <li>Validate on a governed transfer moves it to <b>Waiting for Approval</b>; operations and reservations are <b>locked</b>.</li>
+      <li><b>Approval Rules</b> decide what needs approval: operation kind, <b>Operation Types</b>, <b>Warehouses</b>, <b>Requesting Users</b> and <b>Groups</b>.</li>
+      <li><b>Sequential tiers</b>, each signed by a named user or any member of a group; the next tier is only asked once the previous one signed.</li>
+      <li>Each sign-off stores the <b>user, date, comment</b> and an optional <b>drawn signature</b> in the <b>Approval Info</b> tab.</li>
+      <li>Rejection requires a <b>reason</b>, returns the transfer to <b>Ready</b> and emails it to the requester.</li>
+      <li>Approvers get an <b>email</b> and a <b>Transfer Approval</b> to-do activity the moment their tier opens.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================== HOW IT WORKS ============================== -->
+<h2 style="font-size:28px;font-weight:700;margin:40px 0 6px;color:#2b2b33;">How it works</h2>
+<p style="font-size:16px;color:#555;margin:0 0 18px;">Your team keeps using the normal Validate button. The module takes over from there.</p>
+<div style="display:flex;flex-wrap:wrap;margin:0 -8px;">
+  <div style="flex:1 1 200px;margin:8px;border-radius:12px;border:1px solid #e3dde2;padding:18px;"><div style="width:34px;height:34px;border-radius:50%;background:#714B67;color:#fff;font-weight:700;text-align:center;line-height:34px;margin-bottom:10px;">1</div><div style="font-weight:700;margin-bottom:4px;">Configure</div><div style="font-size:14px;color:#555;">Create an Approval Rule: what it covers and its ordered tiers of approvers.</div></div>
+  <div style="flex:1 1 200px;margin:8px;border-radius:12px;border:1px solid #e3dde2;padding:18px;"><div style="width:34px;height:34px;border-radius:50%;background:#714B67;color:#fff;font-weight:700;text-align:center;line-height:34px;margin-bottom:10px;">2</div><div style="font-weight:700;margin-bottom:4px;">Validate</div><div style="font-size:14px;color:#555;">A user validates as usual. The first matching rule turns it into an approval request and notifies tier 1.</div></div>
+  <div style="flex:1 1 200px;margin:8px;border-radius:12px;border:1px solid #e3dde2;padding:18px;"><div style="width:34px;height:34px;border-radius:50%;background:#714B67;color:#fff;font-weight:700;text-align:center;line-height:34px;margin-bottom:10px;">3</div><div style="font-weight:700;margin-bottom:4px;">Sign off</div><div style="font-size:14px;color:#555;">Each tier approves with a comment and signature, or rejects with a reason. Tiers are signed in order.</div></div>
+  <div style="flex:1 1 200px;margin:8px;border-radius:12px;border:1px solid #cfe7e7;background:#f4fbfb;padding:18px;"><div style="width:34px;height:34px;border-radius:50%;background:#017E84;color:#fff;font-weight:700;text-align:center;line-height:34px;margin-bottom:10px;">4</div><div style="font-weight:700;margin-bottom:4px;">Execute</div><div style="font-size:14px;color:#555;">After the last tier, the transfer is validated automatically (or returns to Ready) and the requester is emailed.</div></div>
+</div>
+
+<!-- ============================== FEATURES ============================== -->
+<h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Features</h2>
+<p style="font-size:16px;color:#555;margin:0 0 6px;">Screenshots were taken on Odoo 16.0 with demo data: a two-tier rule for customer deliveries (Team Leader Sara Haddad, then any member of a <i>Warehouse Supervisors</i> group), a single-tier rule for internal transfers, and a receipts rule that only applies when Marc Demo validates.</p>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Menus</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Two entries, where your team already works</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;"><b>Inventory &rsaquo; Operations &rsaquo; Transfers to Approve</b> is the approver&rsquo;s worklist. <b>Inventory &rsaquo; Configuration &rsaquo; Approval Rules</b> is visible to the <b>Transfer Approvals / Administrator</b> group.</p>
+  <div style="display:flex;flex-wrap:wrap;margin:0 -8px;">
+    <div style="flex:1 1 320px;margin:8px;"><img src="spa_01_menu.png" alt="Inventory Operations menu with Transfers to Approve" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/></div>
+    <div style="flex:1 1 320px;margin:8px;"><img src="spa_02_menu_config.png" alt="Inventory Configuration menu with Approval Rules" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/></div>
+  </div>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 1</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Decide exactly which transfers need approval</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">Each rule ticks <b>Receipts</b>, <b>Delivery Orders</b> and/or <b>Internal Transfers</b>, and can be narrowed to specific <b>Operation Types</b>, <b>Warehouses</b>, <b>Requesting Users</b> or <b>Requesting Groups</b>. Rules are ordered with the drag handle; the <b>first matching rule</b> applies. The <b>Approval Tiers</b> tab lists the tiers in signing order, each with <b>Approver Users</b> and/or <b>Approver Groups</b>. The <b>Transfers</b> smart button lists every transfer that went through the rule.</p>
+  <img src="spa_03_rules_list.png" alt="Approval Rules list" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);margin-bottom:22px;"/>
+  <img src="spa_04_rule_form.png" alt="Approval rule form with two tiers" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  <div style="font-size:13px;color:#777;margin:6px 0 0;">The Warehouses field appears when <i>Multi-Warehouses</i> is enabled in the Inventory settings.</div>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 2</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Workflow options per rule</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">On the <b>Options</b> tab: <b>Validate on Final Approval</b> (execute the transfer automatically after the last tier, or send it back to Ready for manual validation), <b>Allow Self-Approval</b> (off by default: the requester is excluded from every tier), <b>Require Drawn Signature</b>, <b>Email Notifications</b> and <b>Schedule To-Do Activities</b>. Rule changes are tracked in the chatter.</p>
+  <img src="spa_05_rule_options.png" alt="Approval rule Options tab" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 3</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Validate &rarr; Waiting for Approval, with everything locked</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">When a governed transfer is validated, drafts are confirmed and reserved, the reserved quantities are copied into <b>Done</b> (the same step as Odoo&rsquo;s <i>Immediate Transfer</i> dialog, so approvers review exactly what will move) and Odoo&rsquo;s own checks run (lots, serials, empty quantities), but <b>nothing is executed</b>. The status bar shows the new <b>Waiting for Approval</b> step, a banner shows the <b>Current tier</b> and <b>Signed tiers</b>, and <b>Validate</b>, <b>Check Availability</b>, <b>Unreserve</b> and <b>Set/Clear quantities</b> disappear, replaced by <b>Approve</b> and <b>Reject</b> for the current approver. The operations list becomes read-only, and the same lock is enforced on the server: move lines cannot be added, edited or deleted, and the transfer cannot be unreserved, rechecked or processed.</p>
+  <img src="spa_07_waiting_form.png" alt="Delivery waiting for approval, seen by the tier 1 approver" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  <div style="font-size:13px;color:#777;margin:6px 0 0;">Seen by Sara Haddad (tier 1): her Transfer Approval activity and the request email are in the chatter.</div>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 4</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Digital sign-off: comment and drawn signature</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;"><b>Approve</b> opens a dialog showing the transfer and the <b>Tier</b> being signed, with an optional <b>Comment</b> and a <b>Signature</b> pad (mandatory when the rule requires it). The decision is stored on the tier line with the signer and the date, and posted in the chatter.</p>
+  <img src="spa_08_approve_dialog.png" alt="Approve dialog with comment and drawn signature" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 5</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Rejection with a mandatory reason</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;"><b>Reject</b> asks for a <b>Rejection Reason</b>; an empty or blank reason is refused. The rejected tier keeps the reason, the remaining tiers are <b>Cancelled</b>, and the transfer goes back to <b>Ready</b> with its reservation intact and a red <b>Approval rejected</b> banner. The requester receives the reason by email. Correcting the transfer and validating it again starts <b>cycle 2</b>; the history of cycle 1 is kept.</p>
+  <img src="spa_09_reject_dialog.png" alt="Reject dialog with mandatory reason" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);margin-bottom:22px;"/>
+  <img src="spa_11_rejected_history.png" alt="Rejected transfer back in Ready with reason and history" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 6</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Sequential tiers and a complete Approval Info tab</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">The <b>Approval Info</b> tab shows the <b>Approval Status</b>, <b>Approval Rule</b>, <b>Approval Cycle</b>, <b>Approval Progress</b>, <b>Current Approvers</b>, who requested it and when. Below, every tier of every cycle: <b>Approvers</b>, <b>State</b>, <b>Signed By</b>, <b>Decision Date</b>, <b>Comment</b> and <b>Signature</b>. Here tier 1 is signed and tier 2 (a group-based tier, resolved to Omar Khalil) is pending.</p>
+  <img src="spa_10_approval_info.png" alt="Approval Info tab with tier 1 approved and tier 2 pending" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);margin-bottom:22px;"/>
+  <img src="spa_12_approved_history.png" alt="Fully approved and done delivery with both signatures" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  <div style="font-size:13px;color:#777;margin:6px 0 0;">After the second signature the delivery was validated automatically and moved to Done.</div>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 7</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Transfers to Approve worklist</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">The menu opens with the <b>Awaiting My Approval</b> filter, so each approver sees only the transfers whose current tier is theirs. The transfer list also gets <b>Waiting for Approval</b> and <b>Approval Rejected</b> filters, and optional <b>Approval Status</b> and <b>Current Approvers</b> columns (shown here with the filter removed, as an administrator).</p>
+  <img src="spa_06_to_approve.png" alt="Transfers to Approve list with approval columns" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 8</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Automatic emails and to-do activities</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">When a tier opens, its approvers receive the <b>Transfer Approval: Request</b> email (operation type, requester, locations, contact, source document, progress and a <b>Review the transfer</b> button) and a <b>Transfer Approval</b> activity. Signing closes the signer&rsquo;s activity and removes the others of that tier. The requester receives <b>Transfer Approval: Approved</b> or <b>Transfer Approval: Rejected</b>. Emails are rendered in the recipient&rsquo;s language.</p>
+  <img src="spa_13_email.png" alt="Approval request email in English and rejection email in Arabic" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+  <div style="font-size:13px;color:#777;margin:6px 0 0;">Left: request to the tier 1 approver. Right: the rejection email rendered for an Arabic-speaking recipient.</div>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 9</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">The requester&rsquo;s view: read-only, with Recall</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">The person who validated sees the same banner but no Approve or Reject buttons. Instead, <b>Recall Request</b> withdraws the request (also available to administrators): open tiers are cancelled and the transfer returns to its previous state, ready to be corrected.</p>
+  <img src="spa_14_requester_view.png" alt="Requester view with Recall Request button" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+</div>
+
+<div style="margin:44px 0 0;">
+  <div style="font-size:13px;font-weight:700;color:#017E84;letter-spacing:1px;text-transform:uppercase;">Feature 10</div>
+  <h3 style="font-size:23px;font-weight:700;margin:4px 0 8px;">Full Arabic translation</h3>
+  <p style="font-size:15px;line-height:1.6;color:#555;margin:0 0 14px;">Every view, menu, button, field, filter, status, warning, error message and email template is translated in <b>ar_001</b>. Emails render right-to-left.</p>
+  <img src="spa_15_arabic.png" alt="Transfer waiting for approval in Arabic" style="width:100%;border:1px solid #e1e1e6;border-radius:10px;box-shadow:0 6px 24px rgba(30,30,60,.10);"/>
+</div>
+
+<!-- ============================== STATUSES ============================== -->
+<h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Statuses at a glance</h2>
+<p style="font-size:16px;color:#555;margin:0 0 18px;">Two levels: the transfer&rsquo;s <b>Approval Status</b>, and the state of each tier line in its history.</p>
+<div style="display:flex;flex-wrap:wrap;margin:0 -10px;font-size:15px;">
+  <div style="flex:1 1 440px;margin:10px;border:1px solid #e8e8ee;border-radius:14px;padding:22px 24px;">
+    <h3 style="font-size:19px;font-weight:700;margin:0 0 14px;">Approval Status (transfer)</h3>
+    <div style="margin-bottom:6px;"><span style="display:inline-block;min-width:150px;text-align:center;background:#f1f1f4;color:#555;border-radius:10px;padding:1px 8px;font-size:13px;margin-right:10px;">Not Requested</span> no rule applied yet, or request recalled</div>
+    <div style="margin-bottom:6px;"><span style="display:inline-block;min-width:150px;text-align:center;background:#fef3c7;color:#b45309;border-radius:10px;padding:1px 8px;font-size:13px;margin-right:10px;">Pending Approval</span> transfer is <b>Waiting for Approval</b>, locked</div>
+    <div style="margin-bottom:6px;"><span style="display:inline-block;min-width:150px;text-align:center;background:#d1fae5;color:#047857;border-radius:10px;padding:1px 8px;font-size:13px;margin-right:10px;">Approved</span> all tiers signed; validated or ready to validate</div>
+    <div style="margin-bottom:6px;"><span style="display:inline-block;min-width:150px;text-align:center;background:#fee2e2;color:#b91c1c;border-radius:10px;padding:1px 8px;font-size:13px;margin-right:10px;">Rejected</span> back to Ready; revalidate for a new cycle</div>
+  </div>
+  <div style="flex:1 1 440px;margin:10px;border:1px solid #e8e8ee;border-radius:14px;padding:22px 24px;">
+    <h3 style="font-size:19px;font-weight:700;margin:0 0 14px;">Tier line state (history)</h3>
+    <div style="margin-bottom:6px;"><span style="display:inline-block;min-width:150px;text-align:center;background:#f1f1f4;color:#555;border-radius:10px;padding:1px 8px;font-size:13px;margin-right:10px;">Waiting</span> a previous tier has not signed yet</div>
+    <div style="margin-bottom:6px;"><span style="display:inline-block;min-width:150px;text-align:center;background:#fef3c7;color:#b45309;border-radius:10px;padding:1px 8px;font-size:13px;margin-right:10px;">Pending</span> current tier: approvers notified</div>
+    <div style="margin-bottom:6px;"><span style="display:inline-block;min-width:150px;text-align:center;background:#d1fae5;color:#047857;border-radius:10px;padding:1px 8px;font-size:13px;margin-right:10px;">Approved</span> signed, with user, date, comment, signature</div>
+    <div style="margin-bottom:6px;"><span style="display:inline-block;min-width:150px;text-align:center;background:#fee2e2;color:#b91c1c;border-radius:10px;padding:1px 8px;font-size:13px;margin-right:10px;">Rejected</span> refused, with the mandatory reason</div>
+    <div style="margin-bottom:6px;"><span style="display:inline-block;min-width:150px;text-align:center;background:#dbeafe;color:#1d4ed8;border-radius:10px;padding:1px 8px;font-size:13px;margin-right:10px;">Cancelled</span> closed by a rejection, recall or cancellation</div>
+  </div>
+</div>
+<div style="background:#f4fbfb;border-left:4px solid #017E84;border-radius:8px;padding:16px 20px;font-size:15px;line-height:1.6;margin-top:14px;"><b>Rule matching:</b> active rules of the transfer&rsquo;s company are tested by sequence. A rule matches when the operation kind is ticked, the operation type and warehouse are in its lists (or the lists are empty), and the validating user is in <b>Requesting Users</b> or a <b>Requesting Group</b> (or both are empty). Example: with &ldquo;Customer deliveries&rdquo; at sequence 1 and &ldquo;Internal transfers&rdquo; at 2, a delivery gets the two-tier rule and an internal move the single-tier one; a receipt validated by anyone but Marc Demo matches nothing and is validated immediately.</div>
+
+<!-- ============================== CORNER CASES ============================== -->
+<h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Built for real-world corner cases</h2>
+<p style="font-size:16px;color:#555;margin:0 0 18px;">Handled in the code, and most of them pinned down by the automated tests.</p>
+<div style="display:flex;flex-wrap:wrap;margin:0 -8px;font-size:15px;line-height:1.55;">
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Draft transfers</b><br/><span style="color:#555;">Validating a draft confirms and reserves it, then copies the reserved quantities into Done before submission, like the standard Immediate Transfer step. Quantities already entered by hand are kept.</span></div>
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Changes after approval</b><br/><span style="color:#555;">If quantities, products, lots or locations change on an approved transfer that is not yet done, the approval is withdrawn and a new cycle is required.</span></div>
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Backorders</b><br/><span style="color:#555;">A backorder created from an approved transfer starts with no approval and goes through its own cycle.</span></div>
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Inventory adjustments</b><br/><span style="color:#555;">Physical stock corrections can still release a locked reservation: reality wins over a pending approval.</span></div>
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>No back door</b><br/><span style="color:#555;">Code that calls the transfer engine directly cannot process a pending or rejected transfer; approval fields cannot be written through the API.</span></div>
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Separation of duties</b><br/><span style="color:#555;">With <b>Allow Self-Approval</b> off (the default), the requester is removed from every tier. If a tier would have no one left, submission stops with a clear message instead of creating an unsignable request.</span></div>
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Mixed validation from the list</b><br/><span style="color:#555;">Validating several transfers at once submits the governed ones and validates the others normally.</span></div>
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Cancel or archive</b><br/><span style="color:#555;">Cancelling a pending transfer closes its open tiers and activities; archived rules are ignored.</span></div>
+  <div style="flex:1 1 320px;margin:8px;padding:16px 18px;border:1px solid #e8e8ee;border-radius:12px;"><b>Multi-company</b><br/><span style="color:#555;">Rules only match transfers of their own company, and approvers must belong to that company.</span></div>
+</div>
+
+<!-- ============================== SECURITY ============================== -->
+<h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Security</h2>
+<p style="font-size:16px;color:#555;margin:0 0 18px;">A new <b>Transfer Approvals</b> privilege with two levels, set on the user form.</p>
+<table style="width:100%;border-collapse:collapse;font-size:15px;overflow-wrap:anywhere;">
+  <thead><tr style="background:#714B67;color:#fff;"><th style="text-align:left;padding:10px 14px;">Who</th><th style="text-align:left;padding:10px 14px;">Can</th></tr></thead>
+  <tbody>
+    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;width:34%;">Inventory / User</td><td style="padding:10px 14px;">Validate (and so request approval), see rules and approval history, recall their own requests.</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">Transfer Approvals / Approver</td><td style="padding:10px 14px;">Implies Inventory / User. Ready-made group to use in <b>Approver Groups</b>.</td></tr>
+    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">Transfer Approvals / Administrator</td><td style="padding:10px 14px;">Create and edit Approval Rules, sign or reject any tier (override), recall any request.</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">Tier approvers</td><td style="padding:10px 14px;">Only the users listed on the current tier, or members of its groups, can approve or reject it. Other tiers are refused.</td></tr>
+    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;">Approval history</td><td style="padding:10px 14px;">Read-only for everyone; written only by the workflow engine.</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;">Multi-company</td><td style="padding:10px 14px;">Record rules on rules, tiers and sign-offs restrict them to the user&rsquo;s allowed companies.</td></tr>
+  </tbody>
+</table>
+
+<!-- ============================== TECHNICAL ============================== -->
+<h2 style="font-size:28px;font-weight:700;margin:48px 0 6px;color:#2b2b33;">Technical details</h2>
+<table style="width:100%;border-collapse:collapse;font-size:15px;margin-top:14px;overflow-wrap:anywhere;">
+  <tbody>
+    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;width:32%;color:#777;">Odoo version</td><td style="padding:10px 14px;">16.0, Community and Enterprise</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Depends on</td><td style="padding:10px 14px;"><code>stock</code>, <code>mail</code></td></tr>
+    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Python dependency</td><td style="padding:10px 14px;">None</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Menus</td><td style="padding:10px 14px;">Inventory &rsaquo; Operations &rsaquo; Transfers to Approve<br/>Inventory &rsaquo; Configuration &rsaquo; Approval Rules</td></tr>
+    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Models</td><td style="padding:10px 14px;"><code>stock.picking.approval.rule</code>, <code>stock.picking.approval.tier</code>, <code>stock.picking.approval.line</code>, wizard <code>stock.picking.approval.wizard</code></td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Extends</td><td style="padding:10px 14px;"><code>stock.picking</code> (new state <code>to_approve</code>, Approval Info tab, filters), <code>stock.move</code> and <code>stock.move.line</code> (lock while under review)</td></tr>
+    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Data</td><td style="padding:10px 14px;">3 email templates (Request, Approved, Rejected), 1 activity type (Transfer Approval)</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">Automated tests</td><td style="padding:10px 14px;">29 <code>TransactionCase</code> tests: state interception, locking, hidden standard buttons, sequential and group-based tiers, permission enforcement, self-approval, rejection reasons, recall and cancel, rule scope and priority, signatures, notifications, backorders. Odoo&rsquo;s stock test suite (460 tests) gives the same results with the module installed as without it.</td></tr>
+    <tr style="border-bottom:1px solid #eee;"><td style="padding:10px 14px;color:#777;">Translations</td><td style="padding:10px 14px;">Arabic (<code>ar_001</code>), plus a <code>.pot</code> template</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#fafafa;"><td style="padding:10px 14px;color:#777;">License</td><td style="padding:10px 14px;">LGPL-3</td></tr>
+  </tbody>
+</table>
+
+<!-- ============================== CONTACT ============================== -->
+<div style="margin:52px 0 40px;background:linear-gradient(120deg,#714B67 0%,#017E84 100%);border-radius:18px;padding:36px 40px;color:#fff;">
+  <h2 style="font-size:26px;font-weight:700;margin:0 0 8px;color:#fff;">Support &amp; customization</h2>
+  <p style="font-size:16px;line-height:1.6;margin:0 0 20px;color:#fff;opacity:.95;">Questions, a demo, or an adaptation to your own approval process (value thresholds, extra tiers, other documents)? Get in touch.</p>
+  <a href="mailto:ibrahim.yahiah@gmail.com" style="display:inline-block;background:#fff;color:#714B67;font-weight:700;text-decoration:none;border-radius:8px;padding:12px 22px;margin:0 12px 10px 0;">&#9993;&nbsp; ibrahim.yahiah@gmail.com</a>
+  <a href="https://www.linkedin.com/in/ibrahim-yahia" target="_blank" rel="noopener" style="display:inline-block;border:2px solid #fff;color:#fff;font-weight:700;text-decoration:none;border-radius:8px;padding:10px 22px;margin:0 0 10px 0;">LinkedIn: Ibrahim Yahia</a>
+  <p style="font-size:13px;margin:14px 0 0;opacity:.8;color:#fff;">Author: Ibrahim Yahia &middot; License: LGPL-3</p>
+</div>
+
+</section>

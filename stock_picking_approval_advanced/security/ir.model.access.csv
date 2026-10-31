@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_picking_approval_rule_user,stock.picking.approval.rule user,model_stock_picking_approval_rule,stock.group_stock_user,1,0,0,0
+access_picking_approval_rule_manager,stock.picking.approval.rule manager,model_stock_picking_approval_rule,group_picking_approval_manager,1,1,1,1
+access_picking_approval_tier_user,stock.picking.approval.tier user,model_stock_picking_approval_tier,stock.group_stock_user,1,0,0,0
+access_picking_approval_tier_manager,stock.picking.approval.tier manager,model_stock_picking_approval_tier,group_picking_approval_manager,1,1,1,1
+access_picking_approval_line_user,stock.picking.approval.line user,model_stock_picking_approval_line,stock.group_stock_user,1,0,0,0
+access_picking_approval_wizard_user,stock.picking.approval.wizard user,model_stock_picking_approval_wizard,stock.group_stock_user,1,1,1,0

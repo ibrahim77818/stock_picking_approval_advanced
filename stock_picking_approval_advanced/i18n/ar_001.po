@@ -1,0 +1,1270 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-29 06:44+0000\n"
+"PO-Revision-Date: 2026-10-29 06:44+0000\n"
+"Last-Translator: Ibrahim Yahia\n"
+"Language-Team: Arabic\n"
+"Language: ar_001\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking__state
+msgid ""
+" * Draft: The transfer is not confirmed yet. Reservation doesn't apply.\n"
+" * Waiting another operation: This transfer is waiting for another operation before being ready.\n"
+" * Waiting: The transfer is waiting for the availability of some products.\n"
+"(a) The shipping policy is \"As soon as possible\": no product could be reserved.\n"
+"(b) The shipping policy is \"When all products are ready\": not all the products could be reserved.\n"
+" * Ready: The transfer is ready to be processed.\n"
+"(a) The shipping policy is \"As soon as possible\": at least one product has been reserved.\n"
+"(b) The shipping policy is \"When all products are ready\": all product have been reserved.\n"
+" * Done: The transfer has been processed.\n"
+" * Cancelled: The transfer has been cancelled."
+msgstr ""
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "%s submitted for approval. The approvers have been notified."
+msgstr "تم إرسال %s للاعتماد. تم إشعار المعتمدين."
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,body_html:stock_picking_approval_advanced.mail_template_picking_approval_approved
+msgid ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px;\">\n"
+"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br><br>\n"
+"        Your approval request for the transfer\n"
+"        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> has been approved by all tiers.\n"
+"        <br><br>\n"
+"        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
+"            Open the transfer\n"
+"        </a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\" dir=\"rtl\">\n"
+"    <p style=\"margin: 0px; padding: 0px;\">\n"
+"        مرحبًا <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>،<br><br>\n"
+"        طلب الاعتماد الخاص بك للتحويل\n"
+"        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> تم اعتماده من جميع المستويات.\n"
+"        <br><br>\n"
+"        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
+"            فتح التحويل\n"
+"        </a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,body_html:stock_picking_approval_advanced.mail_template_picking_approval_rejected
+msgid ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px;\">\n"
+"        Hello <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>,<br><br>\n"
+"        Your approval request for the transfer\n"
+"        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> has been rejected.\n"
+"        <br><br>\n"
+"        Reason: <em t-out=\"object.approval_rejection_reason or ''\">Quantities do not match the purchase order.</em>\n"
+"        <br><br>\n"
+"        You can correct the transfer and validate it again to start a new approval cycle.\n"
+"        <br><br>\n"
+"        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
+"            Open the transfer\n"
+"        </a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\" dir=\"rtl\">\n"
+"    <p style=\"margin: 0px; padding: 0px;\">\n"
+"        مرحبًا <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t>،<br><br>\n"
+"        طلب الاعتماد الخاص بك للتحويل\n"
+"        <strong t-out=\"object.name or ''\">WH/OUT/00042</strong> تم رفضه.\n"
+"        <br><br>\n"
+"        السبب: <em t-out=\"object.approval_rejection_reason or ''\">Quantities do not match the purchase order.</em>\n"
+"        <br><br>\n"
+"        يمكنك تصحيح التحويل ثم تأكيده مجددًا لبدء دورة اعتماد جديدة.\n"
+"        <br><br>\n"
+"        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
+"            فتح التحويل\n"
+"        </a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,body_html:stock_picking_approval_advanced.mail_template_picking_approval_request
+msgid ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px;\">\n"
+"        Hello,<br><br>\n"
+"        The transfer <strong t-out=\"object.name or ''\">WH/OUT/00042</strong>\n"
+"        (<t t-out=\"object.picking_type_id.display_name or ''\">Delivery Orders</t>)\n"
+"        is waiting for your approval at tier\n"
+"        <strong t-out=\"object.approval_current_line_id.name or ''\">Warehouse Manager</strong>.\n"
+"        <br><br>\n"
+"        Requested by: <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t><br>\n"
+"        Source location: <t t-out=\"object.location_id.display_name or ''\">WH/Stock</t><br>\n"
+"        Destination location: <t t-out=\"object.location_dest_id.display_name or ''\">Customers</t><br>\n"
+"        <t t-if=\"object.partner_id\">Contact: <t t-out=\"object.partner_id.display_name or ''\">Azure Interior</t><br></t>\n"
+"        <t t-if=\"object.origin\">Source document: <t t-out=\"object.origin or ''\">S00012</t><br></t>\n"
+"        Approval progress: <t t-out=\"object.approval_progress or ''\">0 / 2</t>\n"
+"        <br><br>\n"
+"        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
+"            Review the transfer\n"
+"        </a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\" dir=\"rtl\">\n"
+"    <p style=\"margin: 0px; padding: 0px;\">\n"
+"        مرحبًا،<br><br>\n"
+"        التحويل <strong t-out=\"object.name or ''\">WH/OUT/00042</strong>\n"
+"        (<t t-out=\"object.picking_type_id.display_name or ''\">Delivery Orders</t>)\n"
+"        بانتظار اعتمادك في المستوى\n"
+"        <strong t-out=\"object.approval_current_line_id.name or ''\">Warehouse Manager</strong>.\n"
+"        <br><br>\n"
+"        مقدّم الطلب: <t t-out=\"object.approval_requested_by_id.name or ''\">Marc Demo</t><br>\n"
+"        الموقع المصدر: <t t-out=\"object.location_id.display_name or ''\">WH/Stock</t><br>\n"
+"        موقع الوجهة: <t t-out=\"object.location_dest_id.display_name or ''\">Customers</t><br>\n"
+"        <t t-if=\"object.partner_id\">جهة الاتصال: <t t-out=\"object.partner_id.display_name or ''\">Azure Interior</t><br></t>\n"
+"        <t t-if=\"object.origin\">المستند المصدر: <t t-out=\"object.origin or ''\">S00012</t><br></t>\n"
+"        تقدم الاعتماد: <t t-out=\"object.approval_progress or ''\">0 / 2</t>\n"
+"        <br><br>\n"
+"        <a t-att-href=\"object.approval_record_url\" style=\"background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;\">\n"
+"            مراجعة التحويل\n"
+"        </a>\n"
+"    </p>\n"
+"</div>\n"
+"            "
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid ""
+"<i class=\"fa fa-ban me-1\" title=\"Rejected\"/>\n"
+"                        <strong>Approval rejected</strong>"
+msgstr ""
+"<i class=\"fa fa-ban me-1\" title=\"مرفوض\"/>\n"
+"                        <strong>تم رفض الاعتماد</strong>"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid ""
+"<i class=\"fa fa-hourglass-half me-1\" title=\"Waiting for approval\"/>\n"
+"                        <strong>Waiting for approval</strong>"
+msgstr ""
+"<i class=\"fa fa-hourglass-half me-1\" title=\"بانتظار الاعتماد\"/>\n"
+"                        <strong>بانتظار الاعتماد</strong>"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "<span class=\"me-1\">Current tier:</span>"
+msgstr "<span class=\"me-1\">المستوى الحالي:</span>"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "<span class=\"me-1\">Reason:</span>"
+msgstr "<span class=\"me-1\">السبب:</span>"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "<span class=\"ms-4 me-1\">Signed tiers:</span>"
+msgstr "<span class=\"ms-4 me-1\">المستويات الموقّعة:</span>"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "A drawn signature is required to approve this tier."
+msgstr "يلزم توقيع مرسوم لاعتماد هذا المستوى."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "A rejection reason is mandatory."
+msgstr "سبب الرفض إلزامي."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__action
+msgid "Action"
+msgstr "الإجراء"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_needaction
+msgid "Action Needed"
+msgstr "إجراء مطلوب"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: stock_picking_approval_advanced
+#: model:res.groups,name:stock_picking_approval_advanced.group_picking_approval_manager
+msgid "Administrator"
+msgstr "المسؤول"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "All approval tiers signed: the transfer is approved."
+msgstr "تم توقيع جميع مستويات الاعتماد: تم اعتماد التحويل."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__allow_self_approval
+msgid "Allow Self-Approval"
+msgstr "السماح بالاعتماد الذاتي"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "Applies To"
+msgstr "ينطبق على"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_cycle
+msgid "Approval Cycle"
+msgstr "دورة الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_wizard_view_form
+msgid "Approval Decision"
+msgstr "قرار الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_line_ids
+msgid "Approval History"
+msgstr "سجل الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "Approval Info"
+msgstr "معلومات الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_mail_partner_to
+msgid "Approval Mail Partner To"
+msgstr "مستلمو بريد الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_progress
+msgid "Approval Progress"
+msgstr "تقدم الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_record_url
+msgid "Approval Record Url"
+msgstr "رابط سجل الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_internal_search_inherit_approval
+msgid "Approval Rejected"
+msgstr "الاعتماد مرفوض"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_requested_by_id
+msgid "Approval Requested By"
+msgstr "طلب الاعتماد بواسطة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_requested_date
+msgid "Approval Requested On"
+msgstr "تاريخ طلب الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_rule_id
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "Approval Rule"
+msgstr "قاعدة الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.actions.act_window,name:stock_picking_approval_advanced.action_stock_picking_approval_rule
+#: model:ir.ui.menu,name:stock_picking_approval_advanced.menu_stock_picking_approval_rule
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_list
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_search
+msgid "Approval Rules"
+msgstr "قواعد الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_state
+msgid "Approval Status"
+msgstr "حالة الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__tier_ids
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "Approval Tiers"
+msgstr "مستويات الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid ""
+"Approval information is managed by the approval workflow and cannot be "
+"edited manually."
+msgstr ""
+"تُدار معلومات الاعتماد بواسطة سير عمل الاعتماد ولا يمكن تعديلها يدويًا."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Approval request cancelled with the transfer."
+msgstr "تم إلغاء طلب الاعتماد مع إلغاء التحويل."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Approval request recalled by %s."
+msgstr "تم سحب طلب الاعتماد بواسطة %s."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Approval requested"
+msgstr "تم طلب الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Approval requested under rule <b>%(rule)s</b> (%(count)s tier(s))."
+msgstr ""
+"تم طلب الاعتماد وفق القاعدة <b>%(rule)s</b> (%(count)s مستوى/مستويات)."
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,subject:stock_picking_approval_advanced.mail_template_picking_approval_request
+msgid ""
+"Approval required: {{ object.name }} ({{ "
+"object.approval_current_line_id.name or '' }})"
+msgstr ""
+"مطلوب اعتماد: {{ object.name }} ({{ object.approval_current_line_id.name or "
+"'' }})"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_line__cycle
+msgid "Approval round of the transfer."
+msgstr "جولة الاعتماد الخاصة بالتحويل."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking_approval_wizard__action__approve
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "Approve"
+msgstr "اعتماد"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Approve %(picking)s (%(tier)s)"
+msgstr "اعتماد %(picking)s (%(tier)s)"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Approve Transfer"
+msgstr "اعتماد التحويل"
+
+#. module: stock_picking_approval_advanced
+#: model:mail.activity.type,summary:stock_picking_approval_advanced.mail_activity_type_picking_approval
+msgid "Approve transfer"
+msgstr "اعتماد التحويل"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking__approval_state__approved
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking_approval_line__state__approved
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "Approved"
+msgstr "معتمد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_done_date
+msgid "Approved On"
+msgstr "تاريخ الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,subject:stock_picking_approval_advanced.mail_template_picking_approval_approved
+msgid "Approved: {{ object.name }}"
+msgstr "تم الاعتماد: {{ object.name }}"
+
+#. module: stock_picking_approval_advanced
+#: model:res.groups,name:stock_picking_approval_advanced.group_picking_approval_user
+msgid "Approver"
+msgstr "معتمِد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__approver_group_ids
+msgid "Approver Groups"
+msgstr "مجموعات المعتمدين"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__approver_user_ids
+msgid "Approver Users"
+msgstr "المستخدمون المعتمدون"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__approver_user_ids
+msgid "Approvers"
+msgstr "المعتمدون"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__require_signature
+msgid "Approvers must draw a signature to sign off their tier."
+msgstr "يجب على المعتمدين رسم توقيع لاعتماد مستواهم."
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_search
+msgid "Archived"
+msgstr "مؤرشف"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "Are you sure you want to cancel this transfer?"
+msgstr "هل أنت متأكد من رغبتك في إلغاء هذا التحويل؟"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_is_mine
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_internal_search_inherit_approval
+msgid "Awaiting My Approval"
+msgstr "بانتظار اعتمادي"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_can_decide
+msgid "Can Approve"
+msgstr "يمكنه الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__can_decide
+msgid "Can Decide"
+msgstr "يمكنه اتخاذ القرار"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_can_recall
+msgid "Can Recall"
+msgstr "يمكنه السحب"
+
+#. module: stock_picking_approval_advanced
+#: model:res.groups,comment:stock_picking_approval_advanced.group_picking_approval_user
+msgid "Can be designated as approver of transfer approval tiers."
+msgstr "يمكن تعيينه معتمِدًا في مستويات اعتماد التحويلات."
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking_approval_line__state__cancelled
+msgid "Cancelled"
+msgstr "ملغى"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__comment
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__comment
+msgid "Comment"
+msgstr "تعليق"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__company_id
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__company_id
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: stock_picking_approval_advanced
+#: model:res.groups,comment:stock_picking_approval_advanced.group_picking_approval_manager
+msgid "Configures approval rules and can sign off any tier (override)."
+msgstr "يهيئ قواعد الاعتماد ويمكنه اعتماد أي مستوى (صلاحية تجاوز)."
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid ""
+"Correct the transfer and validate it again to start a new approval cycle."
+msgstr "صحّح التحويل ثم قم بتأكيده مجددًا لبدء دورة اعتماد جديدة."
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.actions.act_window,help:stock_picking_approval_advanced.action_stock_picking_approval_rule
+msgid "Create a transfer approval rule"
+msgstr "أنشئ قاعدة اعتماد للتحويلات"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__create_uid
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__create_uid
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__create_uid
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__create_date
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__create_date
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__create_date
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_current_approver_ids
+msgid "Current Approvers"
+msgstr "المعتمدون الحاليون"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_current_line_id
+msgid "Current Tier"
+msgstr "المستوى الحالي"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__cycle
+msgid "Cycle"
+msgstr "الدورة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__date
+msgid "Decision Date"
+msgstr "تاريخ القرار"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.actions.act_window,help:stock_picking_approval_advanced.action_stock_picking_approval_rule
+msgid ""
+"Define which receipts, deliveries and internal transfers need approval,\n"
+"               and who signs them off, tier after tier."
+msgstr ""
+"حدد أي الاستلامات وأوامر التسليم والتحويلات الداخلية تحتاج إلى اعتماد،\n"
+"               ومن يعتمدها، مستوى بعد مستوى."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__apply_on_outgoing
+msgid "Delivery Orders"
+msgstr "أوامر التسليم"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__note
+msgid "Description"
+msgstr "الوصف"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_wizard_view_form
+msgid "Discard"
+msgstr "تجاهل"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__display_name
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__display_name
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__display_name
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__notify_by_email
+msgid "Email Notifications"
+msgstr "إشعارات البريد الإلكتروني"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_tier__approver_group_ids
+msgid ""
+"Every internal user belonging to these groups (directly or through implied "
+"groups) can sign off this tier."
+msgstr ""
+"يمكن لكل مستخدم داخلي ينتمي إلى هذه المجموعات (مباشرة أو عبر المجموعات "
+"الضمنية) اعتماد هذا المستوى."
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_wizard_view_form
+msgid "Explain why this transfer is rejected..."
+msgstr "وضّح سبب رفض هذا التحويل..."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__has_message
+msgid "Has Message"
+msgstr "يحتوي على رسالة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__id
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__id
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__id
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "إذا كان محددًا، فهناك رسائل جديدة تتطلب انتباهك."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_has_error
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا كان محددًا، فهناك رسائل بها خطأ في التسليم."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__validate_on_approval
+msgid ""
+"If checked, the transfer is validated automatically when the last tier "
+"approves. Otherwise it returns to Ready and must be validated manually."
+msgstr ""
+"إذا كان محددًا، يتم تأكيد التحويل تلقائيًا عند اعتماد المستوى الأخير. وإلا "
+"يعود إلى حالة جاهز ويجب تأكيده يدويًا."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__allow_self_approval
+msgid ""
+"If unchecked, the user who requested the approval can never sign a tier of "
+"that request (separation of duties)."
+msgstr ""
+"إذا لم يكن محددًا، فلا يمكن للمستخدم الذي طلب الاعتماد أن يعتمد أي مستوى من "
+"ذلك الطلب (الفصل بين المهام)."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__apply_on_internal
+msgid "Internal Transfers"
+msgstr "التحويلات الداخلية"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "Internal description of this rule..."
+msgstr "وصف داخلي لهذه القاعدة..."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_is_follower
+msgid "Is Follower"
+msgstr "متابع"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line____last_update
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule____last_update
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier____last_update
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__approval_rejection_reason
+msgid "Last Rejection Reason"
+msgstr "آخر سبب رفض"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__write_uid
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__write_uid
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__write_uid
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__write_date
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__write_date
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__write_date
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "المرفق الرئيسي"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid ""
+"No eligible approver was found for tier \"%(tier)s\" of the approval rule "
+"\"%(rule)s\". Please contact your approval administrator."
+msgstr ""
+"لم يتم العثور على معتمِد مؤهل للمستوى \"%(tier)s\" في قاعدة الاعتماد "
+"\"%(rule)s\". يرجى التواصل مع مسؤول الاعتمادات."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking__approval_state__none
+msgid "Not Requested"
+msgstr "لم يُطلب"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.actions.act_window,help:stock_picking_approval_advanced.action_picking_to_approve
+msgid "Nothing waiting for your approval"
+msgstr "لا يوجد ما ينتظر اعتمادك"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "Notifications"
+msgstr "الإشعارات"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "عدد الرسائل التي تتطلب إجراءً"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل ذات أخطاء التسليم"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid ""
+"Only the requester or an approval administrator can recall the approval "
+"request of %s."
+msgstr ""
+"لا يمكن سحب طلب اعتماد %s إلا من قِبل مقدّم الطلب أو مسؤول الاعتمادات."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__picking_type_ids
+msgid "Operation Types"
+msgstr "أنواع العمليات"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Operation not supported"
+msgstr "العملية غير مدعومة"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "Operations and reservations are locked until a decision is made."
+msgstr "العمليات والحجوزات مقفلة حتى يتم اتخاذ قرار."
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_wizard_view_form
+msgid "Optional sign-off comment..."
+msgstr "تعليق اعتماد اختياري..."
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "Options"
+msgstr "الخيارات"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking_approval_line__state__pending
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking__approval_state__pending
+msgid "Pending Approval"
+msgstr "بانتظار الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/wizard/stock_picking_approval_wizard.py:0
+#, python-format
+msgid "Please provide the reason of the rejection."
+msgstr "يرجى إدخال سبب الرفض."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model,name:stock_picking_approval_advanced.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "حركات المنتج (بند حركة المخزون)"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "Recall Request"
+msgstr "سحب الطلب"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid ""
+"Recall this approval request? The transfer will return to its previous "
+"state."
+msgstr "هل تريد سحب طلب الاعتماد هذا؟ سيعود التحويل إلى حالته السابقة."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__apply_on_incoming
+msgid "Receipts"
+msgstr "الاستلامات"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking_approval_wizard__action__reject
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "Reject"
+msgstr "رفض"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Reject Transfer"
+msgstr "رفض التحويل"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking__approval_state__rejected
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking_approval_line__state__rejected
+msgid "Rejected"
+msgstr "مرفوض"
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,subject:stock_picking_approval_advanced.mail_template_picking_approval_rejected
+msgid "Rejected: {{ object.name }}"
+msgstr "تم الرفض: {{ object.name }}"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_wizard_view_form
+msgid ""
+"Rejecting returns the transfer to its requester. A reason is mandatory and will be\n"
+"                    recorded in the approval history."
+msgstr ""
+"يؤدي الرفض إلى إعادة التحويل إلى مقدّم الطلب. السبب إلزامي وسيتم\n"
+"                    تسجيله في سجل الاعتماد."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__rejection_reason
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__rejection_reason
+msgid "Rejection Reason"
+msgstr "سبب الرفض"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "Requested By"
+msgstr "مقدّم الطلب"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__requester_group_ids
+msgid "Requesting Groups"
+msgstr "مجموعات مقدّمي الطلب"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__requester_user_ids
+msgid "Requesting Users"
+msgstr "مستخدمو الطلب"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__require_signature
+msgid "Require Drawn Signature"
+msgstr "يتطلب توقيعًا مرسومًا"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__require_signature
+msgid "Require Signature"
+msgstr "يتطلب توقيعًا"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__picking_type_ids
+msgid ""
+"Restrict the rule to these operation types. Leave empty to apply to every "
+"operation type of the selected kinds."
+msgstr ""
+"قصر القاعدة على أنواع العمليات هذه. اتركه فارغًا لتطبيقها على جميع أنواع "
+"العمليات من الفئات المحددة."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__warehouse_ids
+msgid ""
+"Restrict the rule to transfers of these warehouses. Leave empty for all "
+"warehouses."
+msgstr ""
+"قصر القاعدة على تحويلات هذه المستودعات. اتركه فارغًا لجميع المستودعات."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__rule_id
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__rule_id
+msgid "Rule"
+msgstr "القاعدة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__sequence
+msgid "Rules are evaluated in this order; the first matching rule applies."
+msgstr "يتم تقييم القواعد بهذا الترتيب؛ وتُطبق أول قاعدة مطابقة."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطأ في تسليم الرسائل النصية"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__schedule_activity
+msgid "Schedule To-Do Activities"
+msgstr "جدولة أنشطة المهام"
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,description:stock_picking_approval_advanced.mail_template_picking_approval_request
+msgid "Sent to approvers when a transfer enters an approval tier"
+msgstr "يُرسل إلى المعتمدين عند دخول التحويل مستوى اعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,description:stock_picking_approval_advanced.mail_template_picking_approval_approved
+msgid "Sent to the requester when all approval tiers are signed"
+msgstr "يُرسل إلى مقدّم الطلب عند توقيع جميع مستويات الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,description:stock_picking_approval_advanced.mail_template_picking_approval_rejected
+msgid "Sent to the requester when an approver rejects the transfer"
+msgstr "يُرسل إلى مقدّم الطلب عند رفض أحد المعتمدين للتحويل"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid ""
+"Separation of duties: you cannot approve or reject a request you submitted "
+"yourself."
+msgstr "الفصل بين المهام: لا يمكنك اعتماد أو رفض طلب قمت بتقديمه بنفسك."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__sequence
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__sequence
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__sequence
+msgid "Sequence"
+msgstr "التسلسل"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_form_inherit_approval
+msgid "Sign-off"
+msgstr "الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__signature
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__signature
+msgid "Signature"
+msgstr "التوقيع"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__user_id
+msgid "Signed By"
+msgstr "وقّع بواسطة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__state
+msgid "State"
+msgstr "الحالة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model,name:stock_picking_approval_advanced.model_stock_move
+msgid "Stock Move"
+msgstr "حركة المخزون"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking_approval_rule.py:0
+#, python-format
+msgid "The approval rule \"%s\" must apply to at least one kind of operation."
+msgstr "يجب أن تنطبق قاعدة الاعتماد \"%s\" على نوع واحد على الأقل من العمليات."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking_approval_rule.py:0
+#, python-format
+msgid "The approval rule \"%s\" must define at least one approval tier."
+msgstr "يجب أن تحدد قاعدة الاعتماد \"%s\" مستوى اعتماد واحدًا على الأقل."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking_approval_rule.py:0
+#, python-format
+msgid "The approval tier \"%s\" needs at least one approver user or group."
+msgstr "يحتاج مستوى الاعتماد \"%s\" إلى مستخدم معتمِد أو مجموعة واحدة على الأقل."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid ""
+"The following transfers are already waiting for approval and cannot be validated yet:\n"
+"%s"
+msgstr ""
+"التحويلات التالية بانتظار الاعتماد بالفعل ولا يمكن تأكيدها بعد:\n"
+"%s"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid ""
+"The following transfers are waiting for approval; their operations and reservations are locked until the request is approved, rejected or recalled:\n"
+"%s"
+msgstr ""
+"التحويلات التالية بانتظار الاعتماد؛ عملياتها وحجوزاتها مقفلة حتى يتم اعتماد الطلب أو رفضه أو سحبه:\n"
+"%s"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid ""
+"The following transfers cannot be processed because their approval is pending or was rejected:\n"
+"%s"
+msgstr ""
+"لا يمكن تنفيذ التحويلات التالية لأن اعتمادها قيد الانتظار أو تم رفضه:\n"
+"%s"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid ""
+"The operations were modified after approval: the approval has been withdrawn"
+" and the transfer must be approved again."
+msgstr ""
+"تم تعديل العمليات بعد الاعتماد: تم سحب الاعتماد ويجب اعتماد التحويل مجددًا."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__requester_group_ids
+msgid ""
+"The rule only applies when a member of one of these groups validates the "
+"transfer."
+msgstr ""
+"تنطبق القاعدة فقط عندما يقوم عضو في إحدى هذه المجموعات بتأكيد التحويل."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__requester_user_ids
+msgid ""
+"The rule only applies when one of these users validates the transfer. Leave "
+"users and groups empty to apply to everyone."
+msgstr ""
+"تنطبق القاعدة فقط عندما يقوم أحد هؤلاء المستخدمين بتأكيد التحويل. اترك "
+"المستخدمين والمجموعات فارغة لتطبيقها على الجميع."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "The transfer %s is not waiting for approval."
+msgstr "التحويل %s ليس بانتظار الاعتماد."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__name
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_tier__name
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__tier_name
+msgid "Tier"
+msgstr "المستوى"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Tier %s approved."
+msgstr "تم اعتماد المستوى %s."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Tier <b>%(tier)s</b> rejected. Reason: %(reason)s"
+msgstr "تم رفض المستوى <b>%(tier)s</b>. السبب: %(reason)s"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Tier <b>%s</b> approved."
+msgstr "تم اعتماد المستوى <b>%s</b>."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__tier_id
+msgid "Tier Template"
+msgstr "قالب المستوى"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__tier_count
+msgid "Tiers"
+msgstr "المستويات"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid ""
+"Tiers are signed sequentially, top to bottom. Any one approver of a tier\n"
+"                                can sign it off; the next tier is then notified."
+msgstr ""
+"يتم توقيع المستويات بالتسلسل من الأعلى إلى الأسفل. يمكن لأي معتمِد في المستوى\n"
+"                                اعتماده؛ ثم يتم إشعار المستوى التالي."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model,name:stock_picking_approval_advanced.model_stock_picking
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_line__picking_id
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_wizard__picking_id
+msgid "Transfer"
+msgstr "التحويل"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "Transfer %s is waiting for your approval."
+msgstr "التحويل %s بانتظار اعتمادك."
+
+#. module: stock_picking_approval_advanced
+#: model:mail.activity.type,name:stock_picking_approval_advanced.mail_activity_type_picking_approval
+msgid "Transfer Approval"
+msgstr "اعتماد التحويل"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model,name:stock_picking_approval_advanced.model_stock_picking_approval_wizard
+msgid "Transfer Approval Decision"
+msgstr "قرار اعتماد التحويل"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model,name:stock_picking_approval_advanced.model_stock_picking_approval_rule
+msgid "Transfer Approval Rule"
+msgstr "قاعدة اعتماد التحويلات"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model,name:stock_picking_approval_advanced.model_stock_picking_approval_line
+msgid "Transfer Approval Sign-off"
+msgstr "توقيع اعتماد التحويل"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model,name:stock_picking_approval_advanced.model_stock_picking_approval_tier
+msgid "Transfer Approval Tier"
+msgstr "مستوى اعتماد التحويلات"
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,name:stock_picking_approval_advanced.mail_template_picking_approval_approved
+msgid "Transfer Approval: Approved"
+msgstr "اعتماد التحويل: معتمد"
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,name:stock_picking_approval_advanced.mail_template_picking_approval_rejected
+msgid "Transfer Approval: Rejected"
+msgstr "اعتماد التحويل: مرفوض"
+
+#. module: stock_picking_approval_advanced
+#: model:mail.template,name:stock_picking_approval_advanced.mail_template_picking_approval_request
+msgid "Transfer Approval: Request"
+msgstr "اعتماد التحويل: طلب"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.module.category,name:stock_picking_approval_advanced.module_category_picking_approval
+msgid "Transfer Approvals"
+msgstr "اعتمادات التحويلات"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__picking_count
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "Transfers"
+msgstr "التحويلات"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.actions.act_window,help:stock_picking_approval_advanced.action_picking_to_approve
+msgid ""
+"Transfers submitted for approval appear here as soon as one of your tiers is"
+" pending."
+msgstr ""
+"تظهر هنا التحويلات المقدمة للاعتماد بمجرد أن يصبح أحد مستوياتك قيد الانتظار."
+
+#. module: stock_picking_approval_advanced
+#: model:ir.actions.act_window,name:stock_picking_approval_advanced.action_picking_to_approve
+#: model:ir.ui.menu,name:stock_picking_approval_advanced.menu_stock_picking_to_approve
+msgid "Transfers to Approve"
+msgstr "تحويلات بانتظار الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__validate_on_approval
+msgid "Validate on Final Approval"
+msgstr "التأكيد عند الاعتماد النهائي"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking_approval_line__state__waiting
+msgid "Waiting"
+msgstr "منتظر"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields.selection,name:stock_picking_approval_advanced.selection__stock_picking__state__to_approve
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.view_picking_internal_search_inherit_approval
+msgid "Waiting for Approval"
+msgstr "بانتظار الاعتماد"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__warehouse_ids
+msgid "Warehouses"
+msgstr "المستودعات"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,field_description:stock_picking_approval_advanced.field_stock_picking_approval_rule__website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع الإلكتروني"
+
+#. module: stock_picking_approval_advanced
+#: model:ir.model.fields,help:stock_picking_approval_advanced.field_stock_picking_approval_rule__website_message_ids
+msgid "Website communication history"
+msgstr "سجل تواصل الموقع الإلكتروني"
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "Workflow"
+msgstr "سير العمل"
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid "You are not an authorized approver for tier \"%(tier)s\" of %(picking)s."
+msgstr "لست معتمِدًا مخوّلًا للمستوى \"%(tier)s\" في %(picking)s."
+
+#. module: stock_picking_approval_advanced
+#. odoo-python
+#: code:addons/stock_picking_approval_advanced/models/stock_picking.py:0
+#, python-format
+msgid ""
+"You cannot request approval for a transfer without any quantity to process."
+msgstr "لا يمكنك طلب اعتماد لتحويل لا يحتوي على أي كمية للمعالجة."
+
+#. module: stock_picking_approval_advanced
+#: model_terms:ir.ui.view,arch_db:stock_picking_approval_advanced.stock_picking_approval_rule_view_form
+msgid "e.g. High-value deliveries"
+msgstr "مثال: التسليمات عالية القيمة"

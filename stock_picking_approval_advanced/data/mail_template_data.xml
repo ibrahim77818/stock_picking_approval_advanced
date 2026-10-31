@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sent to the approvers of the tier that just became pending -->
+        <record id="mail_template_picking_approval_request" model="mail.template">
+            <field name="name">Transfer Approval: Request</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="subject">Approval required: {{ object.name }} ({{ object.approval_current_line_id.name or '' }})</field>
+            <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.approval_mail_partner_to }}</field>
+            <field name="use_default_to" eval="False"/>
+            <field name="lang">{{ object.approval_current_approver_ids[:1].partner_id.lang }}</field>
+            <field name="description">Sent to approvers when a transfer enters an approval tier</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px; font-size: 13px;">
+    <p style="margin: 0px; padding: 0px;">
+        Hello,<br/><br/>
+        The transfer <strong t-out="object.name or ''">WH/OUT/00042</strong>
+        (<t t-out="object.picking_type_id.display_name or ''">Delivery Orders</t>)
+        is waiting for your approval at tier
+        <strong t-out="object.approval_current_line_id.name or ''">Warehouse Manager</strong>.
+        <br/><br/>
+        Requested by: <t t-out="object.approval_requested_by_id.name or ''">Marc Demo</t><br/>
+        Source location: <t t-out="object.location_id.display_name or ''">WH/Stock</t><br/>
+        Destination location: <t t-out="object.location_dest_id.display_name or ''">Customers</t><br/>
+        <t t-if="object.partner_id">Contact: <t t-out="object.partner_id.display_name or ''">Azure Interior</t><br/></t>
+        <t t-if="object.origin">Source document: <t t-out="object.origin or ''">S00012</t><br/></t>
+        Approval progress: <t t-out="object.approval_progress or ''">0 / 2</t>
+        <br/><br/>
+        <a t-att-href="object.approval_record_url"
+           style="background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;">
+            Review the transfer
+        </a>
+    </p>
+</div>
+            </field>
+        </record>
+
+        <!-- Sent to the requester when the last tier approves -->
+        <record id="mail_template_picking_approval_approved" model="mail.template">
+            <field name="name">Transfer Approval: Approved</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="subject">Approved: {{ object.name }}</field>
+            <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.approval_requested_by_id.partner_id.id or '' }}</field>
+            <field name="use_default_to" eval="False"/>
+            <field name="lang">{{ object.approval_requested_by_id.partner_id.lang }}</field>
+            <field name="description">Sent to the requester when all approval tiers are signed</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px; font-size: 13px;">
+    <p style="margin: 0px; padding: 0px;">
+        Hello <t t-out="object.approval_requested_by_id.name or ''">Marc Demo</t>,<br/><br/>
+        Your approval request for the transfer
+        <strong t-out="object.name or ''">WH/OUT/00042</strong> has been approved by all tiers.
+        <br/><br/>
+        <a t-att-href="object.approval_record_url"
+           style="background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;">
+            Open the transfer
+        </a>
+    </p>
+</div>
+            </field>
+        </record>
+
+        <!-- Sent to the requester when a tier rejects -->
+        <record id="mail_template_picking_approval_rejected" model="mail.template">
+            <field name="name">Transfer Approval: Rejected</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="subject">Rejected: {{ object.name }}</field>
+            <field name="email_from">{{ (object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.approval_requested_by_id.partner_id.id or '' }}</field>
+            <field name="use_default_to" eval="False"/>
+            <field name="lang">{{ object.approval_requested_by_id.partner_id.lang }}</field>
+            <field name="description">Sent to the requester when an approver rejects the transfer</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px; font-size: 13px;">
+    <p style="margin: 0px; padding: 0px;">
+        Hello <t t-out="object.approval_requested_by_id.name or ''">Marc Demo</t>,<br/><br/>
+        Your approval request for the transfer
+        <strong t-out="object.name or ''">WH/OUT/00042</strong> has been rejected.
+        <br/><br/>
+        Reason: <em t-out="object.approval_rejection_reason or ''">Quantities do not match the purchase order.</em>
+        <br/><br/>
+        You can correct the transfer and validate it again to start a new approval cycle.
+        <br/><br/>
+        <a t-att-href="object.approval_record_url"
+           style="background-color: #875A7B; padding: 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 13px;">
+            Open the transfer
+        </a>
+    </p>
+</div>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_picking_approval_rule_view_list" model="ir.ui.view">
+        <field name="name">stock.picking.approval.rule.list</field>
+        <field name="model">stock.picking.approval.rule</field>
+        <field name="arch" type="xml">
+            <tree string="Approval Rules">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="apply_on_incoming" optional="show"/>
+                <field name="apply_on_outgoing" optional="show"/>
+                <field name="apply_on_internal" optional="show"/>
+                <field name="picking_type_ids" widget="many2many_tags" optional="show"/>
+                <field name="warehouse_ids" widget="many2many_tags" optional="show"/>
+                <field name="tier_count"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_picking_approval_rule_view_form" model="ir.ui.view">
+        <field name="name">stock.picking.approval.rule.form</field>
+        <field name="model">stock.picking.approval.rule</field>
+        <field name="arch" type="xml">
+            <form string="Approval Rule">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_pickings" type="object" class="oe_stat_button" icon="fa-truck">
+                            <field name="picking_count" widget="statinfo" string="Transfers"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. High-value deliveries"/></h1>
+                    </div>
+                    <group>
+                        <group string="Applies To">
+                            <field name="apply_on_incoming"/>
+                            <field name="apply_on_outgoing"/>
+                            <field name="apply_on_internal"/>
+                            <field name="picking_type_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            <field name="warehouse_ids" widget="many2many_tags" options="{'no_create': True}"
+                                   groups="stock.group_stock_multi_warehouses"/>
+                        </group>
+                        <group string="Requested By">
+                            <field name="requester_user_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            <field name="requester_group_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                            <field name="active" invisible="1"/>
+                            <!-- needed by the check_company domains for users without multi-company -->
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Approval Tiers" name="tiers">
+                            <field name="tier_ids">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="approver_user_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                    <field name="approver_group_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                </tree>
+                            </field>
+                            <div class="text-muted">
+                                Tiers are signed sequentially, top to bottom. Any one approver of a tier
+                                can sign it off; the next tier is then notified.
+                            </div>
+                        </page>
+                        <page string="Options" name="options">
+                            <group>
+                                <group string="Workflow">
+                                    <field name="validate_on_approval"/>
+                                    <field name="allow_self_approval"/>
+                                    <field name="require_signature"/>
+                                </group>
+                                <group string="Notifications">
+                                    <field name="notify_by_email"/>
+                                    <field name="schedule_activity"/>
+                                </group>
+                            </group>
+                            <field name="note" placeholder="Internal description of this rule..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="stock_picking_approval_rule_view_search" model="ir.ui.view">
+        <field name="name">stock.picking.approval.rule.search</field>
+        <field name="model">stock.picking.approval.rule</field>
+        <field name="arch" type="xml">
+            <search string="Approval Rules">
+                <field name="name"/>
+                <field name="picking_type_ids"/>
+                <field name="warehouse_ids"/>
+                <separator/>
+                <filter name="inactive" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_stock_picking_approval_rule" model="ir.actions.act_window">
+        <field name="name">Approval Rules</field>
+        <field name="res_model">stock.picking.approval.rule</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a transfer approval rule</p>
+            <p>Define which receipts, deliveries and internal transfers need approval,
+               and who signs them off, tier after tier.</p>
+        </field>
+    </record>
+</odoo>
